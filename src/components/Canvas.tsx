@@ -7,6 +7,7 @@ import ReactFlow, {
   Edge,
   MiniMap,
   Node,
+  NodeTypes,
   OnConnect,
   ReactFlowInstance,
   addEdge,
@@ -14,6 +15,7 @@ import ReactFlow, {
   useNodesState,
 } from "reactflow";
 import "reactflow/dist/style.css";
+import TextUpdaterNode from "./CustomNode/TextUpdaterNode";
 
 const initialNodes: Node[] = [
   {
@@ -27,6 +29,10 @@ const initEdges: Edge[] = [];
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
+
+const nodeTypes: NodeTypes = {
+  textUpdater: TextUpdaterNode,
+};
 
 const Canvas = () => {
   //used for get the position of the ReactFlow component and calculate nodes' positions relative to this component
@@ -88,13 +94,14 @@ const Canvas = () => {
         onInit={setReactFlowInstance}
         onDrop={onDrop}
         onDragOver={onDragOver}
+        nodeTypes={nodeTypes}
         fitView
         className="bg-teal-50"
       >
         <Background color="#888" gap={16} />
         <MiniMap
           nodeColor={(n) => {
-            if (n.type === "default") return "#FFC0CB";
+            if (n.type === "textUpdater") return "#FFC0CB";
             return "#FFCC00";
           }}
         />

@@ -12,14 +12,14 @@ const Sidebar = () => {
   return (
     <Panel
       position="top-left"
-      className="flex flex-col gap-y-4 rounded-md shadow-sm bg-white w-1/6 px-4 py-2"
+      className="flex flex-col gap-y-4 rounded-md shadow-sm bg-white w-1/8 px-4 py-2"
     >
       <div
         className="px-4 py-2 text-sm text-center font-medium text-gray-900 bg-transparent border border-gray-900 rounded-md hover:cursor-move hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white"
-        onDragStart={(event) => onDragStart(event, "default")}
+        onDragStart={(event) => onDragStart(event, "textUpdater")}
         draggable
       >
-        Default Node
+        Input Node
       </div>
     </Panel>
   );
