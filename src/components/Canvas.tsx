@@ -5,6 +5,8 @@ import ReactFlow, {
   Background,
   Controls,
   Edge,
+  EdgeTypes,
+  MarkerType,
   MiniMap,
   Node,
   NodeTypes,
@@ -16,6 +18,7 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 import TextUpdaterNode from "./CustomNode/TextUpdaterNode";
+import TextUpdaterEdge from "./CustomEdge/TextUpdaterEdge";
 
 const initialNodes: Node[] = [
   {
@@ -34,6 +37,10 @@ const nodeTypes: NodeTypes = {
   textUpdater: TextUpdaterNode,
 };
 
+const edgeTypes: EdgeTypes = {
+  textUpdater: TextUpdaterEdge,
+};
+
 const Canvas = () => {
   //used for get the position of the ReactFlow component and calculate nodes' positions relative to this component
   const reactFlowWrapper = useRef<HTMLDivElement | null>(null);
@@ -44,7 +51,17 @@ const Canvas = () => {
     useState<ReactFlowInstance | null>(null);
 
   const onConnect: OnConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+    (params) =>
+      setEdges((eds) =>
+        addEdge(
+          {
+            ...params,
+            type: "textUpdater",
+            markerEnd: { type: MarkerType.ArrowClosed },
+          },
+          eds
+        )
+      ),
     [setEdges]
   );
 
@@ -95,6 +112,7 @@ const Canvas = () => {
         onDrop={onDrop}
         onDragOver={onDragOver}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         fitView
         className="bg-teal-50"
       >

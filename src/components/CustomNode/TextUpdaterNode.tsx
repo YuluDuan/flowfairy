@@ -9,7 +9,7 @@ type NodeData = {
 
 type CustomNode = Node<NodeData>;
 
-function TextUpdaterNode({ data }: NodeProps<NodeData>) {
+function TextUpdaterNode({ data, selected }: NodeProps<NodeData>) {
   const [label, setLabel] = useState("");
   const onChange = useCallback(
     (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
