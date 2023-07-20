@@ -1,4 +1,5 @@
 import React from "react";
+import { Panel } from "reactflow";
 
 const Sidebar = () => {
   const onDragStart = (
@@ -9,18 +10,18 @@ const Sidebar = () => {
     event.dataTransfer.effectAllowed = "move";
   };
   return (
-    <aside>
-      <div className="description">
-        You can drag these nodes to the pane on the right.
-      </div>
+    <Panel
+      position="top-left"
+      className="flex flex-col gap-y-4 rounded-md shadow-sm bg-white w-1/6 px-4 py-2"
+    >
       <div
-        className="dndnode"
+        className="px-4 py-2 text-sm text-center font-medium text-gray-900 bg-transparent border border-gray-900 rounded-md hover:cursor-move hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white"
         onDragStart={(event) => onDragStart(event, "default")}
         draggable
       >
         Default Node
       </div>
-    </aside>
+    </Panel>
   );
 };
 
