@@ -19,6 +19,7 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import TextUpdaterNode from "./CustomNode/TextUpdaterNode";
 import TextUpdaterEdge from "./CustomEdge/TextUpdaterEdge";
+import LinkNode from "./CustomNode/LinkNode";
 
 const initialNodes: Node[] = [
   {
@@ -35,6 +36,7 @@ const getId = () => `dndnode_${id++}`;
 
 const nodeTypes: NodeTypes = {
   textUpdater: TextUpdaterNode,
+  linkNode: LinkNode,
 };
 
 const edgeTypes: EdgeTypes = {
@@ -100,11 +102,13 @@ const Canvas = () => {
     [reactFlowInstance]
   );
 
+  const proOptions = { hideAttribution: true };
   return (
     <div style={{ width: "100%", height: "90vh" }} ref={reactFlowWrapper}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
+        proOptions={proOptions}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}

@@ -21,6 +21,13 @@ const Sidebar = () => {
       >
         Input Node
       </div>
+      <div
+        className="px-4 py-2 text-sm text-center font-medium text-gray-900 bg-transparent border border-gray-900 rounded-md hover:cursor-move hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white"
+        onDragStart={(event) => onDragStart(event, "linkNode")}
+        draggable
+      >
+        Link Node
+      </div>
     </Panel>
   );
 };
