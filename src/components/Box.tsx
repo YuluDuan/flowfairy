@@ -9,10 +9,13 @@ const Box = ({ children, className }: BoxProps) => {
   return (
     <div
       className={twMerge(
-        `bg-sky-500/30
-      rounded-lg
-      h-fit
-      w-full`,
+        `bg-background
+        border
+        border-slate-200
+        rounded-sm
+        p-2
+        h-fit
+        w-full`,
         className
       )}
     >

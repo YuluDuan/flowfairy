@@ -104,7 +104,7 @@ const Canvas = () => {
 
   const proOptions = { hideAttribution: true };
   return (
-    <div style={{ width: "100%", height: "90vh" }} ref={reactFlowWrapper}>
+    <div className="w-full h-full" ref={reactFlowWrapper}>
       <ReactFlow
         nodes={nodes}
         edges={edges}

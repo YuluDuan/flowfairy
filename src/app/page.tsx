@@ -7,10 +7,12 @@ import { ReactFlowProvider } from "reactflow";
 export default function Home() {
   return (
     <>
-      <ReactFlowProvider>
-        <Canvas />
-        <Sidebar />
-      </ReactFlowProvider>
+      <main className="flex w-full h-full">
+        <ReactFlowProvider>
+          <Sidebar />
+          <Canvas />
+        </ReactFlowProvider>
+      </main>
     </>
   );
 }
