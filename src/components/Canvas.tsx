@@ -25,7 +25,7 @@ const initialNodes: Node[] = [
   {
     id: "1",
     data: { label: "Hello From Lucy's Chart Creator" },
-    position: { x: 250, y: 5 },
+    position: { x: 250, y: 35 },
   },
 ];
 
@@ -117,7 +117,7 @@ const Canvas = () => {
         onDragOver={onDragOver}
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
-        fitView
+        defaultViewport={{ x: 0, y: 0, zoom: 1 }}
         className="bg-teal-50"
       >
         <Background color="#888" gap={16} />
