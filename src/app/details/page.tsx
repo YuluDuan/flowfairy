@@ -1,7 +1,21 @@
-export default function Details() {
+import { connectToDB } from "@/lib/db";
+import Flow from "@/models/flow";
+
+async function getFlows() {
+  try {
+    await connectToDB();
+    const flow = await Flow.find({});
+    return flow;
+  } catch (error) {
+    throw new Error("failed to fetch flow");
+  }
+}
+
+export default async function Details() {
+  const flows = await getFlows();
   return (
     <>
-      <h1>Hello Word</h1>
+      <p>{JSON.stringify(flows)}</p>
     </>
   );
 }
