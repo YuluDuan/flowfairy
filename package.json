@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@mui/base": "^5.0.0-beta.8",
+    "@radix-ui/react-dialog": "^1.0.4",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
@@ -19,6 +22,8 @@
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
     "lucide-react": "^0.262.0",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.1",
     "next": "13.4.10",
     "postcss": "8.4.26",
     "react": "18.2.0",
