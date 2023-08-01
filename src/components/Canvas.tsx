@@ -21,15 +21,8 @@ import TextUpdaterNode from "./CustomNode/TextUpdaterNode";
 import TextUpdaterEdge from "./CustomEdge/TextUpdaterEdge";
 import LinkNode from "./CustomNode/LinkNode";
 
-const initialNodes: Node[] = [
-  {
-    id: "1",
-    data: { label: "Hello From Lucy's Chart Creator" },
-    position: { x: 250, y: 35 },
-  },
-];
-
-const initEdges: Edge[] = [];
+import initialNodes from "../constant/nodes";
+import initialEdges from "../constant/edges";
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
@@ -48,7 +41,8 @@ const Canvas = () => {
   const reactFlowWrapper = useRef<HTMLDivElement | null>(null);
 
   const [nodes, setNodes, onNodesChange] = useNodesState<Node[]>(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge[]>(initEdges);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge[]>(initialEdges);
+
   const [reactFlowInstance, setReactFlowInstance] =
     useState<ReactFlowInstance | null>(null);
 

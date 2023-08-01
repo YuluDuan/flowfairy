@@ -1,10 +1,16 @@
 import { Schema, model, models } from 'mongoose';
 
 const FlowSchema = new Schema({
-  Label: {
+  title: {
     type: String,
-    required: [true, 'Label is required.'],
+    required: [true, 'Title is required.'],
+  },
+
+  flowData: {
+    type: Object,
+    required: [true, 'Flow is required.']
   }
+
 });
 
 const Flow = models.Flow || model('Flow', FlowSchema);
