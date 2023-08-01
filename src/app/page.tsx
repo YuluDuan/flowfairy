@@ -8,10 +8,8 @@ export default function Home() {
   return (
     <>
       <ReactFlowProvider>
-        <main className="flex w-full h-full">
-          <Sidebar />
-          <Canvas />
-        </main>
+        <Sidebar />
+        <Canvas />
       </ReactFlowProvider>
     </>
   );

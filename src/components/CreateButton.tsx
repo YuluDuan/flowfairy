@@ -46,7 +46,7 @@ const CreateButton = () => {
       }}
     >
       <DialogTrigger asChild>
-        <Button className="w-full">Create New</Button>
+        <Button className="w-full text-lg">Create New</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
