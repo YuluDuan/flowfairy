@@ -5,6 +5,7 @@ interface Props {
   flows: FlowType[];
 }
 const Library = ({ flows }: Props) => {
+  console.log(flows);
   return (
     <>
       <div className="flex flex-col">

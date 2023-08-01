@@ -42,7 +42,6 @@ import { ReactFlowJsonObject } from "reactflow";
 export async function getFlowsFromDatabase(): Promise<any> {
   try {
     const response = await fetch(process.env.URL+ "/api/flow");
-    console.log("here")
     const data = await response.json();
 
     if (response.status !== 200) {
