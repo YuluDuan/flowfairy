@@ -52,7 +52,8 @@ const CreateButton = () => {
         <DialogHeader>
           <DialogTitle>Create New Flow Chart</DialogTitle>
           <DialogDescription>
-            Add title to your flow chart here. Click to create when you're done.
+            Add title to your flow chart here. Click to create when you&apos;re
+            done.
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center space-between gap-4">
