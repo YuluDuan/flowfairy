@@ -5,7 +5,6 @@ interface Props {
   flows: FlowType[];
 }
 const Library = ({ flows }: Props) => {
-  console.log(flows);
   return (
     <>
       <div className="flex flex-col">
@@ -17,11 +16,6 @@ const Library = ({ flows }: Props) => {
         </div>
         <div className="flex flex-col gap-y-2 mt-4 px-3">
           {flows.map((item) => (
-            //   <MediaItem
-            //     onClick={(id: string) => onPlay(id)}
-            //     key={item.id}
-            //     data={item}
-            //   />
             <p key={item.title}>{item.title}</p>
           ))}
         </div>

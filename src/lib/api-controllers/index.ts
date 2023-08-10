@@ -1,3 +1,4 @@
+import { FlowType } from "@/types";
 import { ReactFlowJsonObject } from "reactflow";
 
   
@@ -36,14 +37,14 @@ import { ReactFlowJsonObject } from "reactflow";
   /**
  * Fetches all flows from the database.
  *
- * @returns {Promise<any>} The flow data.
+ * @returns {Promise<FlowType[]>} The flow data.
  * @throws Will throw an error if fetching fails.
  */
-export async function getFlowsFromDatabase(): Promise<any> {
+export async function getFlowsFromDatabase(): Promise<FlowType[]> {
   try {
-    const response = await fetch(process.env.URL+ "/api/flow");
+    const response = await fetch("/api/flow");
     const data = await response.json();
-
+    
     if (response.status !== 200) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

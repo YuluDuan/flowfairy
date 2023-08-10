@@ -18,13 +18,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const flows = await getFlowsFromDatabase();
   return (
     <html lang="en">
       <body className={quicksand.className}>
         <main className="flex flex-col w-full h-screen">
           <Header />
-          <SideNav flows={flows}>{children}</SideNav>
+          <SideNav>{children}</SideNav>
         </main>
       </body>
     </html>
