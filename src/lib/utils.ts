@@ -7,8 +7,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-
-
 export async function loadDefultFlow(setNodes : any, setEdges : any, setViewport : any) {
   const flow = JSON.parse(JSON.stringify(defaultFlow));
 

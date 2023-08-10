@@ -1,3 +1,4 @@
+import { FlowType } from "@/types";
 import { ReactFlowJsonObject } from "reactflow";
 
   
@@ -11,7 +12,7 @@ import { ReactFlowJsonObject } from "reactflow";
   export async function saveFlowToDatabase (newFlow: {
     title: string;
     flowData: ReactFlowJsonObject;
-  }) {
+  }): Promise<any> {
     try {
       const response = await fetch("/api/flow/new", {
         method: "POST",
@@ -24,9 +25,34 @@ import { ReactFlowJsonObject } from "reactflow";
         }),
       });
 
-      console.log(newFlow.flowData);
-      console.log(newFlow.title);
+      if (response.ok){
+        console.log("response ok", newFlow);
+      }
+
     } catch (error) {
-      console.log("error!!!!!", error);
+      console.log("Oh No error!", error);
     }
   };
+
+  /**
+ * Fetches all flows from the database.
+ *
+ * @returns {Promise<FlowType[]>} The flow data.
+ * @throws Will throw an error if fetching fails.
+ */
+export async function getFlowsFromDatabase(): Promise<FlowType[]> {
+  try {
+    const response = await fetch("/api/flow");
+    const data = await response.json();
+    
+    if (response.status !== 200) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+

@@ -16,10 +16,12 @@ import { useState } from "react";
 import { saveFlowToDatabase } from "@/lib/api-controllers";
 import defaultFlow from "@/constant/defaultFlow.json";
 import { FlowType } from "@/types";
+import useFlowStore from "@/store/useFlowStore";
 
 const CreateButton = () => {
   const [title, setTitle] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const getFlows = useFlowStore((state) => state.getFlows);
 
   const createNewFlow = (): FlowType => ({
     title: title,
@@ -31,9 +33,9 @@ const CreateButton = () => {
 
     try {
       await saveFlowToDatabase(newFlow);
+      getFlows(); // update the flows
       setIsOpen(false);
     } catch (error) {
-      // Handle the error if needed
       console.error("Error while creating flow:", error);
     }
   }
@@ -46,7 +48,7 @@ const CreateButton = () => {
       }}
     >
       <DialogTrigger asChild>
-        <Button className="w-full">Create New</Button>
+        <Button className="w-full text-lg">Create New</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
