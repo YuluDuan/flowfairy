@@ -1,6 +1,11 @@
 import { ReactFlowJsonObject } from "reactflow";
 
-export type FlowType = {
+export interface FlowType {
     title: string;
     flowData: ReactFlowJsonObject;
 };
+
+export interface FlowFromDB extends FlowType {
+    _id: string;
+    __v: number;
+}

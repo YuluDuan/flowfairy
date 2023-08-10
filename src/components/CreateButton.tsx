@@ -17,11 +17,14 @@ import { saveFlowToDatabase } from "@/lib/api-controllers";
 import defaultFlow from "@/constant/defaultFlow.json";
 import { FlowType } from "@/types";
 import useFlowStore from "@/store/useFlowStore";
+import { useRouter } from "next/navigation";
 
 const CreateButton = () => {
   const [title, setTitle] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const getFlows = useFlowStore((state) => state.getFlows);
+
+  const router = useRouter();
 
   const createNewFlow = (): FlowType => ({
     title: title,
@@ -33,8 +36,9 @@ const CreateButton = () => {
 
     try {
       await saveFlowToDatabase(newFlow);
-      getFlows(); // update the flows
       setIsOpen(false);
+      router.push("/");
+      getFlows(); // update the flows
     } catch (error) {
       console.error("Error while creating flow:", error);
     }

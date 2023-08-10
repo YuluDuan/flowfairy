@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import ReactFlow, {
   Background,
   Controls,
@@ -15,6 +15,7 @@ import ReactFlow, {
   addEdge,
   useEdgesState,
   useNodesState,
+  useReactFlow,
 } from "reactflow";
 import "reactflow/dist/style.css";
 import TextUpdaterNode from "./CustomNode/TextUpdaterNode";
@@ -23,6 +24,7 @@ import LinkNode from "./CustomNode/LinkNode";
 
 import initialNodes from "../constant/nodes";
 import initialEdges from "../constant/edges";
+import { FlowFromDB } from "@/types";
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
@@ -36,15 +38,27 @@ const edgeTypes: EdgeTypes = {
   textUpdater: TextUpdaterEdge,
 };
 
-const Canvas = () => {
+interface CanvasProps {
+  flow?: FlowFromDB | null;
+}
+
+const Canvas = ({ flow }: CanvasProps) => {
   //used for get the position of the ReactFlow component and calculate nodes' positions relative to this component
   const reactFlowWrapper = useRef<HTMLDivElement | null>(null);
-
   const [nodes, setNodes, onNodesChange] = useNodesState<Node[]>(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge[]>(initialEdges);
-
+  const { setViewport } = useReactFlow();
   const [reactFlowInstance, setReactFlowInstance] =
     useState<ReactFlowInstance | null>(null);
+
+  // load inital data from db
+  useEffect(() => {
+    if (flow) {
+      setNodes(flow.flowData.nodes);
+      setEdges(flow.flowData.edges);
+      setViewport(flow.flowData.viewport);
+    }
+  }, []);
 
   const onConnect: OnConnect = useCallback(
     (params) =>

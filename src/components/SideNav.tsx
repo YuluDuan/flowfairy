@@ -5,11 +5,7 @@ import Library from "./Library";
 import useFlowStore from "@/store/useFlowStore";
 import { useEffect } from "react";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-const SideNav = ({ children }: Props) => {
+const SideNav = () => {
   const getFlows = useFlowStore((state) => state.getFlows);
   const flows = useFlowStore((state) => state.flow);
 
@@ -18,17 +14,13 @@ const SideNav = ({ children }: Props) => {
   }, []);
 
   return (
-    <div className="flex h-full" role="navigation">
-      <div className="flex flex-col shadow-sm gap-y-2 border-r border-slate-200 h-full w-[300px] p-2">
-        <Box>
-          <CreateButton />
-        </Box>
-        <Box className="overflow-y-auto h-full">
-          <Library flows={flows} />
-        </Box>
-      </div>
-
-      <main className="h-full flex-1 overflow-y-auto relative">{children}</main>
+    <div className="flex flex-col shadow-sm gap-y-2 border-r border-slate-200 h-full w-[300px] p-2">
+      <Box>
+        <CreateButton />
+      </Box>
+      <Box className="overflow-y-auto h-full">
+        <Library flows={flows} />
+      </Box>
     </div>
   );
 };
