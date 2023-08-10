@@ -1,4 +1,4 @@
-import { FlowType } from "@/types";
+import { FlowFromDB } from "@/types";
 import { ReactFlowJsonObject } from "reactflow";
 
   
@@ -37,10 +37,10 @@ import { ReactFlowJsonObject } from "reactflow";
   /**
  * Fetches all flows from the database.
  *
- * @returns {Promise<FlowType[]>} The flow data.
+ * @returns {Promise<FlowFromDB[]>} The flow data.
  * @throws Will throw an error if fetching fails.
  */
-export async function getFlowsFromDatabase(): Promise<FlowType[]> {
+export async function getFlowsFromDatabase(): Promise<FlowFromDB[]> {
   try {
     const response = await fetch("/api/flow");
     const data = await response.json();
@@ -50,6 +50,31 @@ export async function getFlowsFromDatabase(): Promise<FlowType[]> {
     }
 
     return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+/**
+ * Deletes a flow from the database.
+ *
+ * @param {string} flowId - The ID of the flow to delete.
+ * @returns {Promise<any>} The deleted flow data.
+ * @throws Will throw an error if deletion fails.
+ */
+export async function deleteFlowFromDatabase(flowId: string) {
+  try {
+    const response = await fetch(`/api/flow/${flowId}`,{
+      method: "DELETE",
+    });
+    
+    if (response.status !== 200) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+
+    return response.json();
   } catch (error) {
     console.error(error);
     throw error;

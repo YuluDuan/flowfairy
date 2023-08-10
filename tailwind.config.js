@@ -20,6 +20,7 @@ module.exports = {
         '1.5': '1.5px',
       },
       colors: {
+        accent_tone_16: "#F3F2F8",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

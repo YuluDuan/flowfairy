@@ -1,8 +1,9 @@
-import { FlowType } from "@/types";
+import { FlowFromDB } from "@/types";
 import { LuWorkflow } from "react-icons/lu";
+import FlowModal from "./FlowModal";
 
 interface Props {
-  flows: FlowType[];
+  flows: FlowFromDB[];
 }
 const Library = ({ flows }: Props) => {
   return (
@@ -14,9 +15,9 @@ const Library = ({ flows }: Props) => {
             <p className="font-medium text-md">Library</p>
           </div>
         </div>
-        <div className="flex flex-col gap-y-2 mt-4 px-3">
+        <div className="flex flex-col gap-y-2 mt-4">
           {flows.map((item) => (
-            <p key={item.title}>{item.title}</p>
+            <FlowModal key={item._id} flow={item} />
           ))}
         </div>
       </div>
