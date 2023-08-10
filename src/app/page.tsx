@@ -1,16 +1,5 @@
-"use client";
-
-import Canvas from "@/components/Canvas";
-import Sidebar from "@/components/Sidebar";
-import { ReactFlowProvider } from "reactflow";
+import SideNav from "@/components/SideNav";
 
 export default function Home() {
-  return (
-    <>
-      <ReactFlowProvider>
-        <Sidebar />
-        <Canvas />
-      </ReactFlowProvider>
-    </>
-  );
+  return <SideNav />;
 }
