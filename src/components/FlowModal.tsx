@@ -2,6 +2,7 @@ import { FlowFromDB } from "@/types";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { deleteFlowFromDatabase } from "@/lib/api-controllers";
+import { useRouter } from "next/navigation";
 import useFlowStore from "@/store/useFlowStore";
 import Link from "next/link";
 
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const FlowModal = ({ flow }: Props) => {
+  const router = useRouter();
   const getFlows = useFlowStore((state) => state.getFlows);
 
   const handleDeleteFlow = () => {
@@ -19,6 +21,7 @@ const FlowModal = ({ flow }: Props) => {
 
     if (hasConfirmed) {
       deleteFlowFromDatabase(flow._id);
+      router.push("/");
       getFlows();
     }
   };

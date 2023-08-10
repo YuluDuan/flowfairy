@@ -6,11 +6,12 @@ import { ReactFlowProvider } from "reactflow";
 
 export default function Default() {
   return (
-    <>
-      <ReactFlowProvider>
-        <Sidebar />
-        <Canvas />
-      </ReactFlowProvider>
-    </>
+    <div>hi default page</div>
+    // <>
+    //   <ReactFlowProvider>
+    //     <Sidebar />
+    //     <Canvas />
+    //   </ReactFlowProvider>
+    // </>
   );
 }
