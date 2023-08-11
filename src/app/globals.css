@@ -80,3 +80,10 @@
 .orange_gradient {
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
 }
+
+.save {
+  width: 100%;
+  max-width: 16px !important;
+  max-height: 16px !important;
+}
+

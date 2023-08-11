@@ -101,3 +101,31 @@ export async function getFlowFromDatabase(flowId: string): Promise<FlowFromDB>{
     throw error;
   }
 }
+
+/**
+ * Updates an existing flow in the database.
+ *
+ * @param {FlowFromDB} updatedFlow - The updated flow data.
+ * @returns {Promise<FlowFromDB>} The updated flow data.
+ * @throws Will throw an error if the update fails.
+ */
+export async function updateFlowInDatabase(
+  updatedFlow: FlowFromDB
+): Promise<FlowFromDB> {
+  try {
+    const response = await fetch(`/api/flow/${updatedFlow._id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        flowData: updatedFlow.flowData,
+      }),
+    });
+
+    if (response.status !== 200) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}

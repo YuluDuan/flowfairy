@@ -20,7 +20,6 @@ const FlowPage = ({ params }: { params: { flowId: string } }) => {
       }
     };
     fetchFlowData();
-    console.log("render");
   }, [params.flowId]);
 
   return (
