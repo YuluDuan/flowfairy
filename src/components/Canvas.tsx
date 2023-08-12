@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import ReactFlow, {
   Background,
-  Controls,
   Edge,
   EdgeTypes,
   MarkerType,
@@ -18,9 +17,11 @@ import ReactFlow, {
   useReactFlow,
 } from "reactflow";
 import "reactflow/dist/style.css";
+
 import TextUpdaterNode from "./CustomNode/TextUpdaterNode";
 import TextUpdaterEdge from "./CustomEdge/TextUpdaterEdge";
 import LinkNode from "./CustomNode/LinkNode";
+import CustomControl from "./CustomControl/CustomControl";
 
 import initialNodes from "../constant/nodes";
 import initialEdges from "../constant/edges";
@@ -39,7 +40,7 @@ const edgeTypes: EdgeTypes = {
 };
 
 interface CanvasProps {
-  flow?: FlowFromDB | null;
+  flow: FlowFromDB | null;
 }
 
 const Canvas = ({ flow }: CanvasProps) => {
@@ -58,7 +59,7 @@ const Canvas = ({ flow }: CanvasProps) => {
       setEdges(flow.flowData.edges);
       setViewport(flow.flowData.viewport);
     }
-  }, []);
+  }, [flow, setNodes, setEdges, setViewport]);
 
   const onConnect: OnConnect = useCallback(
     (params) =>
@@ -135,7 +136,10 @@ const Canvas = ({ flow }: CanvasProps) => {
             return "#FFCC00";
           }}
         />
-        <Controls />
+        <CustomControl
+          flow={flow}
+          newFlowData={reactFlowInstance?.toObject()}
+        />
       </ReactFlow>
     </div>
   );

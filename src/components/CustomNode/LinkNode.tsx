@@ -1,23 +1,24 @@
 "use client";
-import { useCallback, memo, useState } from "react";
+import { useCallback, memo, useState, useEffect } from "react";
 import { Handle, Position, Node, NodeProps } from "reactflow";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import LinkButton from "../LinkButton";
+import { NodeDataType } from "@/types";
 
-type NodeData = {
-  value: string;
-};
+type CustomNode = Node<NodeDataType>;
 
-type CustomNode = Node<NodeData>;
-
-function LinkNode({ data, selected }: NodeProps<NodeData>) {
-  const [label, setLabel] = useState("");
+function LinkNode({ data: olddata, selected }: NodeProps<NodeDataType>) {
+  const [label, setLabel] = useState(olddata.value);
   const onChange = useCallback(
     (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
       setLabel(evt.target.value);
     },
     []
   );
+
+  useEffect(() => {
+    olddata.value = label;
+  }, [label]);
 
   return (
     <div

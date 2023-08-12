@@ -1,4 +1,3 @@
-import SideNav from "@/components/SideNav";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Quicksand } from "next/font/google";

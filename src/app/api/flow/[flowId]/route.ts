@@ -32,3 +32,25 @@ export const DELETE = async (
       return new  NextResponse("Failed to delete prompt", { status: 500 });
     }
   };
+
+  export const PATCH = async (
+    req: Request,
+    { params }: { params: { flowId: string } }
+  ) => {
+    const { flowData } = await req.json();
+    try {
+      await connectToDB();
+  
+      const existingFlow = await Flow.findById(params.flowId);
+  
+      if (!existingFlow)
+        return new Response("Flow not found", { status: 404 });
+  
+      existingFlow.flowData= flowData;
+  
+      await existingFlow.save();
+      return new Response(JSON.stringify(existingFlow), { status: 200 });
+    } catch (e) {
+      return new Response("Failed to update prompt", { status: 500 });
+    }
+  };

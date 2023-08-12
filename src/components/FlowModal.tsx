@@ -3,8 +3,10 @@ import Image from "next/image";
 import { X } from "lucide-react";
 import { deleteFlowFromDatabase } from "@/lib/api-controllers";
 import { useRouter } from "next/navigation";
-import useFlowStore from "@/store/useFlowStore";
+import useFlowsStore from "@/store/useFlowsStore";
 import Link from "next/link";
+import useFlowStore from "@/store/useFlowStore";
+import { useEffect } from "react";
 
 interface Props {
   flow: FlowFromDB;
@@ -12,7 +14,14 @@ interface Props {
 
 const FlowModal = ({ flow }: Props) => {
   const router = useRouter();
-  const getFlows = useFlowStore((state) => state.getFlows);
+  const getFlows = useFlowsStore((state) => state.getFlows);
+  const oldflow = useFlowStore((state) => state.flow);
+
+  const updateFlow = useFlowStore((state) => state.updateFlow);
+
+  useEffect(() => {
+    updateFlow(flow);
+  }, []);
 
   const handleDeleteFlow = () => {
     const hasConfirmed = confirm(
@@ -21,6 +30,10 @@ const FlowModal = ({ flow }: Props) => {
 
     if (hasConfirmed) {
       deleteFlowFromDatabase(flow._id);
+
+      // only when the canvas id equals the id of deleted flow, the canva change to placeholder
+      // otherwise stay the at the current flow
+      if (oldflow?._id === flow._id) updateFlow(null);
       router.push("/");
       getFlows();
     }

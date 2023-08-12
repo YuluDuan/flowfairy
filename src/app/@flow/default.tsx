@@ -1,17 +1,6 @@
 "use client";
-
-import Canvas from "@/components/Canvas";
-import Sidebar from "@/components/Sidebar";
-import { ReactFlowProvider } from "reactflow";
+import CanvaPlaceHolder from "@/components/CanvaPlaceHolder";
 
 export default function Default() {
-  return (
-    <div>hi default page</div>
-    // <>
-    //   <ReactFlowProvider>
-    //     <Sidebar />
-    //     <Canvas />
-    //   </ReactFlowProvider>
-    // </>
-  );
+  return <CanvaPlaceHolder />;
 }

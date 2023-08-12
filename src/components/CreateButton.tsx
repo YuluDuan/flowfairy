@@ -16,13 +16,13 @@ import { useState } from "react";
 import { saveFlowToDatabase } from "@/lib/api-controllers";
 import defaultFlow from "@/constant/defaultFlow.json";
 import { FlowType } from "@/types";
-import useFlowStore from "@/store/useFlowStore";
+import useFlowsStore from "@/store/useFlowsStore";
 import { useRouter } from "next/navigation";
 
 const CreateButton = () => {
   const [title, setTitle] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const getFlows = useFlowStore((state) => state.getFlows);
+  const getFlows = useFlowsStore((state) => state.getFlows);
 
   const router = useRouter();
 
