@@ -4,15 +4,15 @@ import { create } from "zustand";
 
 type ReactFlowState = {
   getFlows: any;
-  flow: FlowFromDB[];
+  flows: FlowFromDB[];
 };
 
-const useFlowStore = create<ReactFlowState>((set) => ({
-  flow: [],
+const useFlowsStore = create<ReactFlowState>((set) => ({
+  flows: [],
   getFlows: async () => {
     const data = await readFlowsFromDatabase();
-    set({ flow: data });
+    set({ flows: data });
   },
 }));
 
-export default useFlowStore;
+export default useFlowsStore;

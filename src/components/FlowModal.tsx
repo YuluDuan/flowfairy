@@ -3,7 +3,7 @@ import Image from "next/image";
 import { X } from "lucide-react";
 import { deleteFlowFromDatabase } from "@/lib/api-controllers";
 import { useRouter } from "next/navigation";
-import useFlowStore from "@/store/useFlowStore";
+import useFlowsStore from "@/store/useFlowsStore";
 import Link from "next/link";
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 const FlowModal = ({ flow }: Props) => {
   const router = useRouter();
-  const getFlows = useFlowStore((state) => state.getFlows);
+  const getFlows = useFlowsStore((state) => state.getFlows);
 
   const handleDeleteFlow = () => {
     const hasConfirmed = confirm(

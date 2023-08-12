@@ -2,12 +2,12 @@
 import Box from "./Box";
 import CreateButton from "./CreateButton";
 import Library from "./Library";
-import useFlowStore from "@/store/useFlowStore";
+import useFlowsStore from "@/store/useFlowsStore";
 import { useEffect } from "react";
 
 const SideNav = () => {
-  const getFlows = useFlowStore((state) => state.getFlows);
-  const flows = useFlowStore((state) => state.flow);
+  const getFlows = useFlowsStore((state) => state.getFlows);
+  const flows = useFlowsStore((state) => state.flows);
 
   useEffect(() => {
     getFlows();
