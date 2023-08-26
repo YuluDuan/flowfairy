@@ -1,19 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
+import { useState, Suspense } from "react";
 import { Input } from "./ui/input";
 import { IoCloudUpload } from "react-icons/io5";
 
-import { Viewer, Worker } from "@react-pdf-viewer/core";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-
-import "@react-pdf-viewer/core/lib/styles/index.css";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+const ViewerWithWorker = React.lazy(() => import("./ViewerWithWorker"));
 
 const UploadPdf = () => {
   const [pdfFile, setPdfFile] = useState<any>(null);
   const [pdfError, setPdfError] = useState("");
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   const allowedFileTypes = ["application/pdf"];
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,19 +48,9 @@ const UploadPdf = () => {
       <h5>View PDF</h5>
       <div>
         {pdfFile && (
-          <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-            <div
-              className="w-full"
-              style={{
-                height: "750px",
-              }}
-            >
-              <Viewer
-                fileUrl={pdfFile}
-                plugins={[defaultLayoutPluginInstance]}
-              ></Viewer>
-            </div>
-          </Worker>
+          <Suspense fallback={<div>Loading Viewer...</div>}>
+            <ViewerWithWorker pdfFile={pdfFile} />
+          </Suspense>
         )}
         {!pdfFile && <>No file has been selected yet</>}
       </div>
