@@ -1,6 +1,8 @@
 "use client";
 
+import { EdgeDataType } from "@/types";
 import React, { useState } from "react";
+
 import {
   BaseEdge,
   EdgeLabelRenderer,
@@ -9,7 +11,7 @@ import {
 } from "reactflow";
 
 const TextUpdaterEdge = ({
-  id,
+  data,
   sourceX,
   sourceY,
   targetX,
@@ -18,7 +20,7 @@ const TextUpdaterEdge = ({
   targetPosition,
   style = {},
   markerEnd,
-}: EdgeProps) => {
+}: EdgeProps<EdgeDataType>) => {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -28,9 +30,11 @@ const TextUpdaterEdge = ({
     targetPosition,
   });
 
-  const [label, setLabel] = useState("");
+  const initinalLabel = data ? data.label : "";
+  const [label, setLabel] = useState(initinalLabel);
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setLabel(evt.target.value);
+    data!.label = evt.target.value;
   };
 
   return (
