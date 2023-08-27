@@ -31,7 +31,9 @@ import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import ExampleTheme from "./themes/ExampleTheme";
 
 function Placeholder() {
-  return <div className="editor-placeholder">Enter some rich text...</div>;
+  return (
+    <div className="editor-placeholder">Start Editing your Note here...</div>
+  );
 }
 
 const editorConfig = {
