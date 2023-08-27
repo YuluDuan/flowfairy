@@ -35,7 +35,7 @@ const UploadPdf = () => {
 
   return (
     <div className="flex-col w-1/2 h-full p-3 border-r border-slate-200">
-      <form className="flex-col gap-1 mb-4">
+      <form className="flex-col gap-1 mb-3">
         <div className="flex gap-3 items-center">
           <label htmlFor="upload" className="text-base">
             <IoCloudUpload className="w-8 h-8" />
@@ -45,14 +45,12 @@ const UploadPdf = () => {
         {pdfError && <small className="text-red-500 pl-11">{pdfError}</small>}
       </form>
 
-      <h5>View PDF</h5>
       <div>
         {pdfFile && (
           <Suspense fallback={<div>Loading Viewer...</div>}>
             <ViewerWithWorker pdfFile={pdfFile} />
           </Suspense>
         )}
-        {!pdfFile && <>No file has been selected yet</>}
       </div>
     </div>
   );

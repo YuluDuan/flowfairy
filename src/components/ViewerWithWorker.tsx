@@ -7,7 +7,7 @@ const ViewerWithWorker = ({ pdfFile }: any) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
   return (
     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-      <div className="w-full" style={{ height: "750px" }}>
+      <div className="w-full" style={{ height: "650px" }}>
         <Viewer fileUrl={pdfFile} plugins={[defaultLayoutPluginInstance]} />
       </div>
     </Worker>
