@@ -76,18 +76,14 @@ export default function Editor(): JSX.Element | null {
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />
-          {/* <ListPlugin />
+          <ListPlugin />
           <HistoryPlugin />
           <AutoFocusPlugin />
           <CodeHighlightPlugin />
           <LinkPlugin />
           <TabIndentationPlugin />
           <AutoLinkPlugin />
-          <MarkdownShortcutPlugin transformers={TRANSFORMERS} /> */}
-          <HistoryPlugin />
-          <AutoFocusPlugin />
-          <ListPlugin />
-          <LinkPlugin />
+          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
         </div>
       </div>
     </LexicalComposer>

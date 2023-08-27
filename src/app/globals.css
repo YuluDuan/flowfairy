@@ -139,13 +139,15 @@ h1 {
 }
 
 .editor-inner {
-  width: 50%;
+  width: 100%;
   background: #fff;
   position: relative;
 }
 
 .editor-input {
   min-height: 150px;
+  height: 100%;
+  width: 100%;
   resize: none;
   font-size: 15px;
   caret-color: rgb(5, 5, 5);
@@ -333,12 +335,14 @@ h1 {
   padding: 0;
   margin: 0;
   margin-left: 16px;
+  list-style: decimal;
 }
 
 .editor-list-ul {
   padding: 0;
   margin: 0;
   margin-left: 16px;
+  list-style:disc;
 }
 
 .editor-listitem {
@@ -485,6 +489,7 @@ pre::-webkit-scrollbar-thumb {
   width: 1px;
   background-color: #eee;
   margin: 0 4px;
+  border-right: 1px solid #DDDDDD;
 }
 
 .toolbar select.toolbar-item {
@@ -837,5 +842,91 @@ i.right-align {
 
 i.justify-align {
   background-image: url(../images/icons/justify.svg);
+}
+
+
+.link-editor {
+  position: absolute;
+  z-index: 100;
+  top: -10000px;
+  left: -10000px;
+  margin-top: -6px;
+  max-width: 300px;
+  width: 100%;
+  opacity: 0;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  transition: opacity 0.5s;
+}
+
+.link-editor .link-input {
+  display: block;
+  width: calc(100% - 24px);
+  box-sizing: border-box;
+  margin: 8px 12px;
+  padding: 8px 12px;
+  border-radius: 15px;
+  background-color: #eee;
+  font-size: 15px;
+  color: rgb(5, 5, 5);
+  border: 0;
+  outline: 0;
+  position: relative;
+  font-family: inherit;
+}
+
+.link-editor div.link-edit {
+  background-image: url(../images/icons/pencil-fill.svg);
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 35px;
+  vertical-align: -0.25em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.link-editor .link-input a {
+  color: rgb(33, 111, 219);
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 30px;
+  text-overflow: ellipsis;
+}
+
+.link-editor .link-input a:hover {
+  text-decoration: underline;
+}
+
+.link-editor .button {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+.link-editor .button.hovered {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: #eee;
+}
+
+.link-editor .button i,
+.actions i {
+  background-size: contain;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  vertical-align: -0.25em;
 }
 
