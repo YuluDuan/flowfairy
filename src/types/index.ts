@@ -15,3 +15,7 @@ export type NodeDataType = {
     id: string;
     value: any;
 };
+
+export type EdgeDataType = {
+    label: string;
+}

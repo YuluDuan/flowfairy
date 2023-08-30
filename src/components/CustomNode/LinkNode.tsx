@@ -1,24 +1,20 @@
 "use client";
-import { useCallback, memo, useState, useEffect } from "react";
+import { useCallback, memo, useState } from "react";
 import { Handle, Position, Node, NodeProps } from "reactflow";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
-import LinkButton from "../LinkButton";
 import { NodeDataType } from "@/types";
+import Link from "next/link";
+import { GoProjectSymlink } from "react-icons/go";
 
-type CustomNode = Node<NodeDataType>;
-
-function LinkNode({ data: olddata, selected }: NodeProps<NodeDataType>) {
-  const [label, setLabel] = useState(olddata.value);
+function LinkNode({ id, data, selected }: NodeProps<NodeDataType>) {
+  const [label, setLabel] = useState(data.value);
   const onChange = useCallback(
     (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
       setLabel(evt.target.value);
+      data.value = evt.target.value;
     },
     []
   );
-
-  useEffect(() => {
-    olddata.value = label;
-  }, [label]);
 
   return (
     <div
@@ -35,7 +31,11 @@ function LinkNode({ data: olddata, selected }: NodeProps<NodeDataType>) {
         placeholder="Write here"
         className="text-xs placeholder:italic placeholder:text-slate-400 text-center focus:outline-none leading-none resize-none font-normal"
       />
-      <LinkButton />
+      <button onClick={() => console.log(id)}>
+        <Link href={`/node/${id}`} className="black_btn">
+          <GoProjectSymlink className=" hover:text-cyan-500 cursor-pointer transition duration-500 ease-in-out hover:scale-110" />
+        </Link>
+      </button>
       <Handle type="source" id="h2" position={Position.Bottom} />
       <Handle type="source" id="h3" position={Position.Left} />
       <Handle type="target" id="h4" position={Position.Right} />

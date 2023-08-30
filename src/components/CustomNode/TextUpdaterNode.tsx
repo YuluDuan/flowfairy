@@ -1,22 +1,19 @@
 "use client";
-import { useCallback, memo, useState, useEffect } from "react";
+import { useCallback, memo, useState } from "react";
 import { Handle, Position, NodeProps } from "reactflow";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { NodeDataType } from "@/types";
 
-function TextUpdaterNode({ data: olddata, selected }: NodeProps<NodeDataType>) {
-  const [label, setLabel] = useState(olddata.value);
+function TextUpdaterNode({ data, selected }: NodeProps<NodeDataType>) {
+  const [label, setLabel] = useState(data.value);
 
   const onChange = useCallback(
     (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
       setLabel(evt.target.value);
+      data.value = evt.target.value;
     },
     []
   );
-
-  useEffect(() => {
-    olddata.value = label;
-  }, [label]);
 
   return (
     <div
