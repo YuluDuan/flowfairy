@@ -67,6 +67,7 @@ import {
 import DropDown, { DropDownItem } from "../ui/DropDown";
 import { getSelectedNode } from "../utils/getSelectedNode";
 import { sanitizeUrl } from "../utils/url";
+import DropdownColorPicker from "../ui/DropdownColorPicker";
 
 const blockTypeToBlockName = {
   bullet: "Bulleted List",
@@ -717,6 +718,25 @@ export default function ToolbarPlugin(): JSX.Element {
     }
   }, [editor, isLink]);
 
+  const applyStyleText = useCallback(
+    (styles: Record<string, string>) => {
+      activeEditor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          $patchStyleText(selection, styles);
+        }
+      });
+    },
+    [activeEditor]
+  );
+
+  const onFontColorSelect = useCallback(
+    (value: string) => {
+      applyStyleText({ color: value });
+    },
+    [applyStyleText]
+  );
+
   return (
     <div className="toolbar">
       <button
@@ -857,6 +877,16 @@ export default function ToolbarPlugin(): JSX.Element {
           </button>
           {isLink &&
             createPortal(<FloatingLinkEditor editor={editor} />, document.body)}
+
+          <DropdownColorPicker
+            disabled={!isEditable}
+            buttonClassName="toolbar-item color-picker"
+            buttonAriaLabel="Formatting text color"
+            buttonIconClassName="icon font-color"
+            color={fontColor}
+            onChange={onFontColorSelect}
+            title="text color"
+          />
         </>
       )}
     </div>
