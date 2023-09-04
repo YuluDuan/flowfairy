@@ -59,7 +59,8 @@ const Canvas = ({ flow }: CanvasProps) => {
       setEdges(flow.flowData.edges);
       setViewport(flow.flowData.viewport);
     }
-  }, [flow, setNodes, setEdges, setViewport]);
+    // console.log("canvas", flow);
+  }, [flow]);
 
   const onConnect: OnConnect = useCallback(
     (params) =>

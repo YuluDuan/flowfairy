@@ -1,6 +1,7 @@
-import Header from "@/components/Header";
-import SideNav from "@/components/SideNav";
+import React from "react";
 
-export default function Home() {
-  return <SideNav />;
-}
+const LandingPage = () => {
+  return <div>page</div>;
+};
+
+export default LandingPage;

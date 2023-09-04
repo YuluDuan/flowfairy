@@ -37,7 +37,7 @@ const CreateButton = () => {
     try {
       await saveFlowToDatabase(newFlow);
       setIsOpen(false);
-      router.push("/");
+      router.push("/main");
       getFlows(); // update the flows
     } catch (error) {
       console.error("Error while creating flow:", error);

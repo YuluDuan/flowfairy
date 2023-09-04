@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import useFlowsStore from "@/store/useFlowsStore";
 import Link from "next/link";
 import useFlowStore from "@/store/useFlowStore";
-import { useEffect } from "react";
 
 interface Props {
   flow: FlowFromDB;
@@ -19,9 +18,9 @@ const FlowModal = ({ flow }: Props) => {
 
   const updateFlow = useFlowStore((state) => state.updateFlow);
 
-  useEffect(() => {
-    updateFlow(flow);
-  }, []);
+  // useEffect(() => {
+  //   updateFlow(flow);
+  // }, []);
 
   const handleDeleteFlow = () => {
     const hasConfirmed = confirm(
@@ -34,13 +33,13 @@ const FlowModal = ({ flow }: Props) => {
       // only when the canvas id equals the id of deleted flow, the canva change to placeholder
       // otherwise stay the at the current flow
       if (oldflow?._id === flow._id) updateFlow(null);
-      router.push("/");
+      router.push("/main");
       getFlows();
     }
   };
   return (
     <div className="group flex w-full py-2 px-3 items-center justify-between border rounded-xl border-solid border-accent_tone_16 bg-white shadow-sm hover:border-black">
-      <Link className="flex gap-3 items-center" href={`/flow/${flow._id}`}>
+      <Link className="flex gap-3 items-center" href={`/main/flow/${flow._id}`}>
         <Image src="/assets/flow.svg" height={18} width={18} alt="flow" />
         <p className="hover:cursor-default">{flow.title}</p>
       </Link>
