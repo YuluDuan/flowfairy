@@ -9,11 +9,43 @@ import { FlowFromDB, NodeDataType } from "@/types";
 import { LexicalEditor } from "lexical";
 import { useRef, useState } from "react";
 
-const LinkPage = ({ params }: { params: { nodeId: string } }) => {
-  const editorRef = useRef<LexicalEditor>();
-  const [pdfFile, setPdfFile] = useState<any>(null);
+const getTheNodeData = (
+  flow: FlowFromDB | null,
+  params: { nodeId: string }
+) => {
+  let nodeData: NodeDataType | null = null;
+  if (flow) {
+    const nodes = flow!.flowData.nodes;
+    const nodeIndex = nodes.findIndex((node) => node.id === params.nodeId);
+    if (nodeIndex !== -1) {
+      const modifiedFlow: FlowFromDB = { ...flow };
+      const modifiedNodes = [...modifiedFlow.flowData!.nodes];
+      nodeData = modifiedNodes[nodeIndex].data;
+      return nodeData;
+    }
+  }
 
+  return nodeData;
+};
+
+const getinitalEditorContent = (
+  flow: FlowFromDB | null,
+  params: { nodeId: string }
+) => {
+  const nodeData = getTheNodeData(flow, params);
+  if (nodeData) {
+    return nodeData.editorContent;
+  } else {
+    return '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
+  }
+};
+
+const LinkPage = ({ params }: { params: { nodeId: string } }) => {
   const flow: FlowFromDB | null = useFlowStore((state) => state.flow);
+  const editorRef = useRef<LexicalEditor>();
+  const [pdfFile, setPdfFile] = useState<any>(
+    getTheNodeData(flow, params)?.pdf
+  );
 
   const handleSavePDFandEditor = async () => {
     //find the specific node data
@@ -27,9 +59,9 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
         nodeData.pdf = pdfFile;
 
         if (editorRef.current) {
-          const editorState = editorRef.current;
-          const editorStateJSON = editorState.toJSON();
-          nodeData.editorContent = JSON.stringify(editorStateJSON);
+          nodeData.editorContent = JSON.stringify(
+            editorRef.current.toJSON().editorState
+          );
         }
         // Update the modified nodes back into the modified flow
         modifiedFlow.flowData!.nodes = modifiedNodes;
@@ -43,7 +75,10 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
       <LinkHeader handleSavePDFandEditor={handleSavePDFandEditor} />
       <div className="flex w-full h-full">
         <UploadPdf pdfFile={pdfFile} setPdfFile={setPdfFile} />
-        <Editor ref={editorRef} />
+        <Editor
+          ref={editorRef}
+          initailEditorState={getinitalEditorContent(flow, params)}
+        />
       </div>
     </>
   );

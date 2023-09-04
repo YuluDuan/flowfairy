@@ -31,7 +31,6 @@ import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import ExampleTheme from "./themes/ExampleTheme";
 import EditorCapturePlugin from "./plugins/EditorCapturePlugin";
 import React from "react";
-import { LexicalEditor } from "lexical";
 
 function Placeholder() {
   return (
@@ -39,62 +38,69 @@ function Placeholder() {
   );
 }
 
-const editorConfig = {
-  // The editor theme
-  theme: ExampleTheme,
-  namespace: "Flow-Editor",
-  onError(error: unknown) {
-    throw error;
-  },
+interface EditorProps {
+  initailEditorState: string;
+}
 
-  nodes: [
-    HeadingNode,
-    ListNode,
-    ListItemNode,
-    QuoteNode,
-    CodeNode,
-    CodeHighlightNode,
-    TableNode,
-    TableCellNode,
-    TableRowNode,
-    AutoLinkNode,
-    LinkNode,
-  ],
-};
+const Editor = React.forwardRef(
+  ({ initailEditorState }: EditorProps, ref: any): JSX.Element | null => {
+    const [isMounted, setIsMounted] = useState(false);
 
-const Editor = React.forwardRef((props: any, ref: any): JSX.Element | null => {
-  const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    if (!isMounted) return null;
 
-  if (!isMounted) return null;
+    console.log("initailEditorState", initailEditorState);
+    const editorConfig = {
+      theme: ExampleTheme,
+      editorState: initailEditorState,
+      namespace: "Flow-Editor",
+      onError(error: unknown) {
+        throw error;
+      },
 
-  return (
-    <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container">
-        <ToolbarPlugin />
-        <div className="editor-inner">
-          <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input" />}
-            placeholder={<Placeholder />}
-            ErrorBoundary={LexicalErrorBoundary}
-          />
-          <ListPlugin />
-          <HistoryPlugin />
-          <AutoFocusPlugin />
-          <CodeHighlightPlugin />
-          <LinkPlugin />
-          <TabIndentationPlugin />
-          <AutoLinkPlugin />
-          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
-          <EditorCapturePlugin ref={ref} />
+      nodes: [
+        HeadingNode,
+        ListNode,
+        ListItemNode,
+        QuoteNode,
+        CodeNode,
+        CodeHighlightNode,
+        TableNode,
+        TableCellNode,
+        TableRowNode,
+        AutoLinkNode,
+        LinkNode,
+      ],
+    };
+
+    return (
+      <LexicalComposer initialConfig={editorConfig}>
+        <div className="editor-container">
+          <ToolbarPlugin />
+          <div className="editor-inner">
+            <RichTextPlugin
+              contentEditable={<ContentEditable className="editor-input" />}
+              placeholder={<Placeholder />}
+              ErrorBoundary={LexicalErrorBoundary}
+            />
+            <ListPlugin />
+            <HistoryPlugin />
+            <AutoFocusPlugin />
+            <CodeHighlightPlugin />
+            <LinkPlugin />
+            <TabIndentationPlugin />
+            <AutoLinkPlugin />
+            <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+            <EditorCapturePlugin ref={ref} />
+          </div>
         </div>
-      </div>
-    </LexicalComposer>
-  );
-});
+      </LexicalComposer>
+    );
+  }
+);
 
 Editor.displayName = "Editor";
 export default Editor;
