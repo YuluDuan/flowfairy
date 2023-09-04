@@ -29,6 +29,9 @@ import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import ExampleTheme from "./themes/ExampleTheme";
+import EditorCapturePlugin from "./plugins/EditorCapturePlugin";
+import React from "react";
+import { LexicalEditor } from "lexical";
 
 function Placeholder() {
   return (
@@ -59,7 +62,7 @@ const editorConfig = {
   ],
 };
 
-export default function Editor(): JSX.Element | null {
+const Editor = React.forwardRef((props: any, ref: any): JSX.Element | null => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -86,8 +89,12 @@ export default function Editor(): JSX.Element | null {
           <TabIndentationPlugin />
           <AutoLinkPlugin />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+          <EditorCapturePlugin ref={ref} />
         </div>
       </div>
     </LexicalComposer>
   );
-}
+});
+
+Editor.displayName = "Editor";
+export default Editor;

@@ -1,12 +1,15 @@
-"use client";
-
 import { GiFairyWand } from "react-icons/gi";
 import { IoSave } from "react-icons/io5";
 import { HiBackspace } from "react-icons/hi";
+import { useRouter } from "next/navigation";
 
-const LinkHeader = () => {
-  const handleBackToPrePage = () => {};
-  const handleSavePDFandEditor = () => {};
+interface LinkHeaderProps {
+  handleSavePDFandEditor: () => void;
+}
+
+const LinkHeader = ({ handleSavePDFandEditor }: LinkHeaderProps) => {
+  const router = useRouter();
+
   return (
     <>
       <nav className="flex justify-between items-center width-full h-14 px-6 py-3 border-b border-solid border-inherit">
@@ -15,7 +18,7 @@ const LinkHeader = () => {
           <p className="font-semibold text-xl orange_gradient">FLOWFAIRY</p>
         </div>
         <div className="flex gap-3 items-center">
-          <button onClick={handleBackToPrePage}>
+          <button onClick={() => router.back()}>
             <HiBackspace className="w-8 h-8 cursor-pointer" />
           </button>
 

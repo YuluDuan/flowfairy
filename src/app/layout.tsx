@@ -13,7 +13,7 @@ export const metadata = {
 
 export default async function RootLayout(props: {
   children: React.ReactNode;
-  flow: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -21,8 +21,8 @@ export default async function RootLayout(props: {
         <Header />
         <main className="flex h-full w-full">
           {props.children}
-          <div className="h-full flex-1 overflow-y-auto relative">
-            {props.flow}
+          <div className="h-full w-full flex-1 overflow-y-auto relative">
+            {props.modal}
           </div>
         </main>
       </body>
