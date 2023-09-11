@@ -1,10 +1,10 @@
 "use client";
 
-import CanvaPlaceHolder from "@/components/CanvaPlaceHolder";
-import Canvas from "@/components/Canvas";
-import Sidebar from "@/components/Sidebar";
-import { getFlowFromDatabase } from "@/lib/api-controllers";
-import useFlowStore from "@/store/useFlowStore";
+import CanvaPlaceHolder from "../../../../../../components/CanvaPlaceHolder";
+import Canvas from "../../../../../../components/Canvas";
+import Sidebar from "../../../../../../components/Sidebar";
+import { getFlowFromDatabase } from "../../../../../../lib/api-controllers";
+import useFlowStore from "../../../../../../store/useFlowStore";
 import { useEffect } from "react";
 import { ReactFlowProvider } from "reactflow";
 
@@ -29,12 +29,10 @@ const FlowPage = ({ params }: { params: { flowId: string } }) => {
   if (!flow) return <CanvaPlaceHolder />;
 
   return (
-    <>
-      <ReactFlowProvider>
-        <Sidebar />
-        <Canvas flow={flow} />
-      </ReactFlowProvider>
-    </>
+    <ReactFlowProvider>
+      <Sidebar />
+      <Canvas flow={flow} />
+    </ReactFlowProvider>
   );
 };
 

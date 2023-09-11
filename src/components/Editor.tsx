@@ -29,6 +29,8 @@ import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import ExampleTheme from "./themes/ExampleTheme";
+import EditorCapturePlugin from "./plugins/EditorCapturePlugin";
+import React from "react";
 
 function Placeholder() {
   return (
@@ -36,58 +38,69 @@ function Placeholder() {
   );
 }
 
-const editorConfig = {
-  // The editor theme
-  theme: ExampleTheme,
-  namespace: "Flow-Editor",
-  onError(error: unknown) {
-    throw error;
-  },
-
-  nodes: [
-    HeadingNode,
-    ListNode,
-    ListItemNode,
-    QuoteNode,
-    CodeNode,
-    CodeHighlightNode,
-    TableNode,
-    TableCellNode,
-    TableRowNode,
-    AutoLinkNode,
-    LinkNode,
-  ],
-};
-
-export default function Editor(): JSX.Element | null {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
-
-  return (
-    <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container">
-        <ToolbarPlugin />
-        <div className="editor-inner">
-          <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input" />}
-            placeholder={<Placeholder />}
-            ErrorBoundary={LexicalErrorBoundary}
-          />
-          <ListPlugin />
-          <HistoryPlugin />
-          <AutoFocusPlugin />
-          <CodeHighlightPlugin />
-          <LinkPlugin />
-          <TabIndentationPlugin />
-          <AutoLinkPlugin />
-          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
-        </div>
-      </div>
-    </LexicalComposer>
-  );
+interface EditorProps {
+  initailEditorState: string | undefined;
 }
+
+const Editor = React.forwardRef(
+  ({ initailEditorState }: EditorProps, ref: any): JSX.Element | null => {
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
+
+    if (!isMounted) return null;
+
+    console.log("initailEditorState", initailEditorState);
+    const editorConfig = {
+      theme: ExampleTheme,
+      editorState: initailEditorState,
+      namespace: "Flow-Editor",
+      onError(error: unknown) {
+        throw error;
+      },
+
+      nodes: [
+        HeadingNode,
+        ListNode,
+        ListItemNode,
+        QuoteNode,
+        CodeNode,
+        CodeHighlightNode,
+        TableNode,
+        TableCellNode,
+        TableRowNode,
+        AutoLinkNode,
+        LinkNode,
+      ],
+    };
+
+    return (
+      <LexicalComposer initialConfig={editorConfig}>
+        <div className="editor-container">
+          <ToolbarPlugin />
+          <div className="editor-inner">
+            <RichTextPlugin
+              contentEditable={<ContentEditable className="editor-input" />}
+              placeholder={<Placeholder />}
+              ErrorBoundary={LexicalErrorBoundary}
+            />
+            <ListPlugin />
+            <HistoryPlugin />
+            <AutoFocusPlugin />
+            <CodeHighlightPlugin />
+            <LinkPlugin />
+            <TabIndentationPlugin />
+            <AutoLinkPlugin />
+            <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+            <EditorCapturePlugin ref={ref} />
+          </div>
+        </div>
+      </LexicalComposer>
+    );
+  }
+);
+
+Editor.displayName = "Editor";
+export default Editor;

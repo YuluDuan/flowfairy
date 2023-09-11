@@ -1,6 +1,7 @@
 import { FlowFromDB } from "@/types";
 import { LuWorkflow } from "react-icons/lu";
 import FlowModal from "./FlowModal";
+import { ConfirmDialog } from "primereact/confirmdialog";
 
 interface Props {
   flows: FlowFromDB[];
@@ -16,6 +17,7 @@ const Library = ({ flows }: Props) => {
           </div>
         </div>
         <div className="flex flex-col gap-y-2 mt-4">
+          <ConfirmDialog />
           {flows.map((item) => (
             <FlowModal key={item._id} flow={item} />
           ))}

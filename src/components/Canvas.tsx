@@ -27,8 +27,9 @@ import initialNodes from "../constant/nodes";
 import initialEdges from "../constant/edges";
 import { FlowFromDB } from "@/types";
 
-let id = 0;
-const getId = () => `dndnode_${id++}`;
+import { v4 as uuidv4 } from "uuid";
+
+const getId = () => uuidv4();
 
 const nodeTypes: NodeTypes = {
   textUpdater: TextUpdaterNode,
@@ -59,7 +60,7 @@ const Canvas = ({ flow }: CanvasProps) => {
       setEdges(flow.flowData.edges);
       setViewport(flow.flowData.viewport);
     }
-  }, [flow, setNodes, setEdges, setViewport]);
+  }, [flow]);
 
   const onConnect: OnConnect = useCallback(
     (params) =>
@@ -137,10 +138,7 @@ const Canvas = ({ flow }: CanvasProps) => {
             return "#FFCC00";
           }}
         />
-        <CustomControl
-          flow={flow}
-          newFlowData={reactFlowInstance?.toObject()}
-        />
+        <CustomControl flow={flow} reactFlowInstance={reactFlowInstance} />
       </ReactFlow>
     </div>
   );

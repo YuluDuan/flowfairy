@@ -7,8 +7,13 @@ import { IoCloudUpload } from "react-icons/io5";
 
 const ViewerWithWorker = React.lazy(() => import("./ViewerWithWorker"));
 
-const UploadPdf = () => {
-  const [pdfFile, setPdfFile] = useState<any>(null);
+interface UploadPdfProps {
+  pdfFile: any;
+  setPdfFile: (value: any) => void;
+}
+
+const UploadPdf = ({ pdfFile, setPdfFile }: UploadPdfProps) => {
+  // const [pdfFile, setPdfFile] = useState<any>(null);
   const [pdfError, setPdfError] = useState("");
 
   const allowedFileTypes = ["application/pdf"];

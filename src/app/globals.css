@@ -426,7 +426,7 @@ pre::-webkit-scrollbar-thumb {
 }
 
 .emoji.happysmile {
-  background-image: url(.././images/emoji/1F642.png);
+  background-image: url(../images/emoji/1F642.png);
 }
 
 .toolbar {
