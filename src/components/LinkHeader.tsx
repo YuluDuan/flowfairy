@@ -32,10 +32,6 @@ const LinkHeader = ({ handleSavePDFandEditor }: LinkHeaderProps) => {
           <p className="font-semibold text-xl orange_gradient">FLOWFAIRY</p>
         </div>
         <div className="flex gap-3 items-center">
-          {/* <button onClick={handleBackspace}>
-            <HiBackspace className="w-8 h-8 cursor-pointer" />
-          </button> */}
-
           <Dialog>
             <DialogTrigger asChild>
               <button>
@@ -66,7 +62,7 @@ const LinkHeader = ({ handleSavePDFandEditor }: LinkHeaderProps) => {
             </DialogContent>
           </Dialog>
 
-          <button onClick={() => handleSavePDFandEditor}>
+          <button onClick={() => handleSavePDFandEditor()}>
             <IoSave className="w-6 h-6 cursor-pointer" />
           </button>
         </div>

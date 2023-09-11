@@ -38,7 +38,7 @@ const CreateButton = () => {
     try {
       await saveFlowToDatabase(newFlow);
       setIsOpen(false);
-      router.push("/main");
+      router.refresh();
       getFlows(); // update the flows
       toast.success(`Flow ${title} created`, { duration: 2000 });
     } catch (error) {

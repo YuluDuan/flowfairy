@@ -7,7 +7,6 @@ import { getFlowFromDatabase } from "../../../../../../lib/api-controllers";
 import useFlowStore from "../../../../../../store/useFlowStore";
 import { useEffect } from "react";
 import { ReactFlowProvider } from "reactflow";
-import React from "react";
 
 const FlowPage = ({ params }: { params: { flowId: string } }) => {
   const [flow, updateFlow] = useFlowStore((state) => [
