@@ -18,6 +18,7 @@ import defaultFlow from "@/constant/defaultFlow.json";
 import { FlowType } from "@/types";
 import useFlowsStore from "@/store/useFlowsStore";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 const CreateButton = () => {
   const [title, setTitle] = useState("");
@@ -39,7 +40,9 @@ const CreateButton = () => {
       setIsOpen(false);
       router.push("/main");
       getFlows(); // update the flows
+      toast.success(`Flow ${title} created`, { duration: 2000 });
     } catch (error) {
+      toast.error(`"Error while creating flow: ${title}"`);
       console.error("Error while creating flow:", error);
     }
   }

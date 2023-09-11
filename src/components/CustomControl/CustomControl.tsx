@@ -6,6 +6,7 @@ import { FlowFromDB } from "@/types";
 import { updateFlowInDatabase } from "@/lib/api-controllers";
 import { useCallback } from "react";
 import useFlowStore from "@/store/useFlowStore";
+import { toast } from "react-hot-toast";
 
 interface CustomControlProps {
   reactFlowInstance: ReactFlowInstance | null;
@@ -21,9 +22,14 @@ const CustomControl = ({ flow, reactFlowInstance }: CustomControlProps) => {
         if (flow && reactFlowInstance) {
           const newFlowData = reactFlowInstance.toObject();
           const newFlow = { ...flow, flowData: newFlowData };
-          const updatedFlow = await updateFlowInDatabase(newFlow);
-          updateFlow(updatedFlow);
-          console.log("save flow successfully", updatedFlow);
+          updateFlow(newFlow);
+          // const updatedFlow = await updateFlowInDatabase(newFlow);
+          // console.log("save flow successfully", updatedFlow);
+          toast.promise(updateFlowInDatabase(newFlow), {
+            loading: "Trying to Save the New Flow ...",
+            success: "Save flow successfully",
+            error: "Something went wrong",
+          });
         }
       } catch (error) {
         console.log(error);

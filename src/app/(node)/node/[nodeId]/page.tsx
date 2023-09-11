@@ -8,6 +8,7 @@ import useFlowStore from "@/store/useFlowStore";
 import { FlowFromDB, NodeDataType } from "@/types";
 import { LexicalEditor } from "lexical";
 import { useCallback, useRef, useState } from "react";
+import { toast } from "react-hot-toast";
 
 const getTheNodeData = (
   flow: FlowFromDB | null,
@@ -66,8 +67,10 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
           modifiedFlow.flowData!.nodes = modifiedNodes;
           const updatedFlow = await updateFlowInDatabase(modifiedFlow);
           console.log("save flow successfully", updatedFlow);
+          toast.success("Congrats, Note has been Saved!");
         } else {
           console.log("cannot find the node index");
+          toast.error("Somthing went wrong");
         }
       }
     };
