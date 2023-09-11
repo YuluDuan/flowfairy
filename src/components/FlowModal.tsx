@@ -25,10 +25,6 @@ const FlowModal = ({ flow }: Props) => {
   const updateFlow = useFlowStore((state) => state.updateFlow);
 
   const handleDeleteFlow = () => {
-    // const hasConfirmed = confirm(
-    //   "Are you sure you want to delete this flow chart?"
-    // );
-
     const accept = () => {
       deleteFlowFromDatabase(flow._id);
 
@@ -51,16 +47,6 @@ const FlowModal = ({ flow }: Props) => {
       accept,
       reject,
     });
-
-    // if (hasConfirmed) {
-    //   deleteFlowFromDatabase(flow._id);
-
-    //   // only when the canvas id equals the id of deleted flow, the canva change to placeholder
-    //   // otherwise stay the at the current flow
-    //   if (oldflow?._id === flow._id) updateFlow(null);
-    //   router.push("/main");
-    //   getFlows();
-    // }
   };
   return (
     <>

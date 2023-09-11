@@ -46,37 +46,43 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
     getTheNodeData(flow, params)?.pdf
   );
 
-  const handleSavePDFandEditor = useCallback(() => {
-    const SavePDFandEditor = async () => {
-      //find the specific node data
-      if (flow) {
-        const nodes = flow!.flowData.nodes;
-        const nodeIndex = nodes.findIndex((node) => node.id === params.nodeId);
-        if (nodeIndex !== -1) {
-          const modifiedFlow: FlowFromDB = { ...flow };
-          const modifiedNodes = [...modifiedFlow.flowData!.nodes];
-          const nodeData: NodeDataType = modifiedNodes[nodeIndex].data;
-          nodeData.pdf = pdfFile;
+  const handleSavePDFandEditor = useCallback(
+    (func?: () => void) => {
+      const SavePDFandEditor = async () => {
+        //find the specific node data
+        if (flow) {
+          const nodes = flow!.flowData.nodes;
+          const nodeIndex = nodes.findIndex(
+            (node) => node.id === params.nodeId
+          );
+          if (nodeIndex !== -1) {
+            const modifiedFlow: FlowFromDB = { ...flow };
+            const modifiedNodes = [...modifiedFlow.flowData!.nodes];
+            const nodeData: NodeDataType = modifiedNodes[nodeIndex].data;
+            nodeData.pdf = pdfFile;
 
-          if (editorRef.current) {
-            nodeData.editorContent = JSON.stringify(
-              editorRef.current.toJSON().editorState
-            );
+            if (editorRef.current) {
+              nodeData.editorContent = JSON.stringify(
+                editorRef.current.toJSON().editorState
+              );
+            }
+            // Update the modified nodes back into the modified flow
+            modifiedFlow.flowData!.nodes = modifiedNodes;
+            const updatedFlow = await updateFlowInDatabase(modifiedFlow);
+            console.log("save flow successfully", updatedFlow);
+            toast.success("Congrats, Note has been Saved!");
+            if (func) func();
+          } else {
+            console.log("cannot find the node index");
+            toast.error("Somthing went wrong");
           }
-          // Update the modified nodes back into the modified flow
-          modifiedFlow.flowData!.nodes = modifiedNodes;
-          const updatedFlow = await updateFlowInDatabase(modifiedFlow);
-          console.log("save flow successfully", updatedFlow);
-          toast.success("Congrats, Note has been Saved!");
-        } else {
-          console.log("cannot find the node index");
-          toast.error("Somthing went wrong");
         }
-      }
-    };
+      };
 
-    SavePDFandEditor();
-  }, [flow]);
+      SavePDFandEditor();
+    },
+    [flow]
+  );
   return (
     <>
       <LinkHeader handleSavePDFandEditor={handleSavePDFandEditor} />
