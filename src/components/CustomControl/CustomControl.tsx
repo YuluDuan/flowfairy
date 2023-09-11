@@ -1,13 +1,11 @@
-import {
-  Controls,
-  ControlButton,
-  ReactFlowJsonObject,
-  ReactFlowInstance,
-} from "reactflow";
+"use client";
+
+import { Controls, ControlButton, ReactFlowInstance } from "reactflow";
 import { IoIosSave } from "react-icons/io";
 import { FlowFromDB } from "@/types";
 import { updateFlowInDatabase } from "@/lib/api-controllers";
 import { useCallback } from "react";
+import useFlowStore from "@/store/useFlowStore";
 
 interface CustomControlProps {
   reactFlowInstance: ReactFlowInstance | null;
@@ -15,6 +13,8 @@ interface CustomControlProps {
 }
 
 const CustomControl = ({ flow, reactFlowInstance }: CustomControlProps) => {
+  const updateFlow = useFlowStore((state) => state.updateFlow);
+
   const handleUpdateSaveOnClick = useCallback(() => {
     const saveFlow = async () => {
       try {
@@ -22,6 +22,7 @@ const CustomControl = ({ flow, reactFlowInstance }: CustomControlProps) => {
           const newFlowData = reactFlowInstance.toObject();
           const newFlow = { ...flow, flowData: newFlowData };
           const updatedFlow = await updateFlowInDatabase(newFlow);
+          updateFlow(updatedFlow);
           console.log("save flow successfully", updatedFlow);
         }
       } catch (error) {

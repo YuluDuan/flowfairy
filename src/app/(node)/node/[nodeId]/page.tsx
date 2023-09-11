@@ -7,7 +7,7 @@ import { updateFlowInDatabase } from "@/lib/api-controllers";
 import useFlowStore from "@/store/useFlowStore";
 import { FlowFromDB, NodeDataType } from "@/types";
 import { LexicalEditor } from "lexical";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 const getTheNodeData = (
   flow: FlowFromDB | null,
@@ -35,8 +35,6 @@ const getinitalEditorContent = (
   const nodeData = getTheNodeData(flow, params);
   if (nodeData) {
     return nodeData.editorContent;
-  } else {
-    return '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
   }
 };
 
@@ -47,29 +45,35 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
     getTheNodeData(flow, params)?.pdf
   );
 
-  const handleSavePDFandEditor = async () => {
-    //find the specific node data
-    if (flow) {
-      const nodes = flow!.flowData.nodes;
-      const nodeIndex = nodes.findIndex((node) => node.id === params.nodeId);
-      if (nodeIndex !== -1) {
-        const modifiedFlow: FlowFromDB = { ...flow };
-        const modifiedNodes = [...modifiedFlow.flowData!.nodes];
-        const nodeData: NodeDataType = modifiedNodes[nodeIndex].data;
-        nodeData.pdf = pdfFile;
+  const handleSavePDFandEditor = useCallback(() => {
+    const SavePDFandEditor = async () => {
+      //find the specific node data
+      if (flow) {
+        const nodes = flow!.flowData.nodes;
+        const nodeIndex = nodes.findIndex((node) => node.id === params.nodeId);
+        if (nodeIndex !== -1) {
+          const modifiedFlow: FlowFromDB = { ...flow };
+          const modifiedNodes = [...modifiedFlow.flowData!.nodes];
+          const nodeData: NodeDataType = modifiedNodes[nodeIndex].data;
+          nodeData.pdf = pdfFile;
 
-        if (editorRef.current) {
-          nodeData.editorContent = JSON.stringify(
-            editorRef.current.toJSON().editorState
-          );
+          if (editorRef.current) {
+            nodeData.editorContent = JSON.stringify(
+              editorRef.current.toJSON().editorState
+            );
+          }
+          // Update the modified nodes back into the modified flow
+          modifiedFlow.flowData!.nodes = modifiedNodes;
+          const updatedFlow = await updateFlowInDatabase(modifiedFlow);
+          console.log("save flow successfully", updatedFlow);
+        } else {
+          console.log("cannot find the node index");
         }
-        // Update the modified nodes back into the modified flow
-        modifiedFlow.flowData!.nodes = modifiedNodes;
-        const updatedFlow = await updateFlowInDatabase(modifiedFlow);
-        console.log("save flow successfully", updatedFlow);
       }
-    }
-  };
+    };
+
+    SavePDFandEditor();
+  }, [flow]);
   return (
     <>
       <LinkHeader handleSavePDFandEditor={handleSavePDFandEditor} />

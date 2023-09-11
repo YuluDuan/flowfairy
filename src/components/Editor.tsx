@@ -39,7 +39,7 @@ function Placeholder() {
 }
 
 interface EditorProps {
-  initailEditorState: string;
+  initailEditorState: string | undefined;
 }
 
 const Editor = React.forwardRef(

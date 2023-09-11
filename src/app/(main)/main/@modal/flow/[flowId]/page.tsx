@@ -20,8 +20,6 @@ const FlowPage = ({ params }: { params: { flowId: string } }) => {
       try {
         const flow = await getFlowFromDatabase(params.flowId);
         updateFlow(flow);
-        // console.log("feched the data");
-        // console.log("page", flow);
       } catch (error) {
         console.error("Failed to fetch flow data:", error);
       }
