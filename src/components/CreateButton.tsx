@@ -16,16 +16,14 @@ import { useState } from "react";
 import { saveFlowToDatabase } from "@/lib/api-controllers";
 import defaultFlow from "@/constant/defaultFlow.json";
 import { FlowType } from "@/types";
-import useFlowsStore from "@/store/useFlowsStore";
-import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
+import useFlowsStore from "@/store/useFlowsStore";
 
 const CreateButton = () => {
   const [title, setTitle] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const getFlows = useFlowsStore((state) => state.getFlows);
-
-  const router = useRouter();
+  const flows = useFlowsStore((state) => state.flows);
+  const updateFlows = useFlowsStore((state) => state.updateFlows);
 
   const createNewFlow = (): FlowType => ({
     title: title,
@@ -38,8 +36,8 @@ const CreateButton = () => {
     try {
       await saveFlowToDatabase(newFlow);
       setIsOpen(false);
-      getFlows(); // update the flows
-      router.refresh();
+      const newflows = [...flows, newFlow];
+      updateFlows(newflows);
       toast.success(`Flow ${title} created`, { duration: 2000 });
     } catch (error) {
       toast.error(`"Error while creating flow: ${title}"`);

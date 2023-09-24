@@ -3,7 +3,7 @@ import Image from "next/image";
 import { X } from "lucide-react";
 import { deleteFlowFromDatabase } from "@/lib/api-controllers";
 import { useRouter } from "next/navigation";
-import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import { confirmDialog } from "primereact/confirmdialog";
 import useFlowsStore from "@/store/useFlowsStore";
 import Link from "next/link";
 import useFlowStore from "@/store/useFlowStore";
@@ -19,7 +19,8 @@ interface Props {
 
 const FlowModal = ({ flow }: Props) => {
   const router = useRouter();
-  const getFlows = useFlowsStore((state) => state.getFlows);
+  const updateFlows = useFlowsStore((state) => state.updateFlows);
+  const flows = useFlowsStore((state) => state.flows);
   const oldflow = useFlowStore((state) => state.flow);
 
   const updateFlow = useFlowStore((state) => state.updateFlow);
@@ -31,8 +32,9 @@ const FlowModal = ({ flow }: Props) => {
       // only when the canvas id equals the id of deleted flow, the canva change to placeholder
       // otherwise stay the at the current flow
       if (oldflow?._id === flow._id) updateFlow(null);
+      const updatedFlows = flows.filter((item) => item._id !== flow._id);
+      updateFlows(updatedFlows);
       router.push("/main");
-      getFlows();
       toast.success("Deleted!");
     };
 

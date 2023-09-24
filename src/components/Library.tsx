@@ -19,7 +19,7 @@ const Library = ({ flows }: Props) => {
         <div className="flex flex-col gap-y-2 mt-4">
           <ConfirmDialog />
           {flows.map((item) => (
-            <FlowModal key={item._id} flow={item} />
+            <FlowModal key={`${item._id}flowModal`} flow={item} />
           ))}
         </div>
       </div>

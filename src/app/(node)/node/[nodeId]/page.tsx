@@ -41,11 +41,11 @@ const getinitalEditorContent = (
 
 const LinkPage = ({ params }: { params: { nodeId: string } }) => {
   const flow: FlowFromDB | null = useFlowStore((state) => state.flow);
+  const updateFlow = useFlowStore((state) => state.updateFlow);
   const editorRef = useRef<LexicalEditor>();
   const [pdfFile, setPdfFile] = useState<any>(
     getTheNodeData(flow, params)?.pdf
   );
-
   const handleSavePDFandEditor = useCallback(
     (func?: () => void) => {
       const SavePDFandEditor = async () => {
@@ -60,6 +60,8 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
             const modifiedNodes = [...modifiedFlow.flowData!.nodes];
             const nodeData: NodeDataType = modifiedNodes[nodeIndex].data;
             nodeData.pdf = pdfFile;
+            console.log("pdf222", pdfFile);
+            console.log("node", nodeData);
 
             if (editorRef.current) {
               nodeData.editorContent = JSON.stringify(
@@ -69,6 +71,7 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
             // Update the modified nodes back into the modified flow
             modifiedFlow.flowData!.nodes = modifiedNodes;
             const updatedFlow = await updateFlowInDatabase(modifiedFlow);
+            updateFlow(updatedFlow);
             console.log("save flow successfully", updatedFlow);
             toast.success("Congrats, Note has been Saved!");
             if (func) func();
@@ -81,7 +84,7 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
 
       SavePDFandEditor();
     },
-    [flow]
+    [flow, pdfFile]
   );
   return (
     <>

@@ -3,14 +3,13 @@ import { FlowFromDB } from "@/types";
 import { create } from "zustand";
 
 type ReactFlowState = {
-  getFlows: any;
+  updateFlows: any;
   flows: FlowFromDB[];
 };
 
 const useFlowsStore = create<ReactFlowState>((set) => ({
   flows: [],
-  getFlows: async () => {
-    const data = await readFlowsFromDatabase();
+  updateFlows: (data: FlowFromDB[]) => {
     set({ flows: data });
   },
 }));

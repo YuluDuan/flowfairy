@@ -64,7 +64,7 @@ const LinkHeader = ({ handleSavePDFandEditor }: LinkHeaderProps) => {
             </DialogContent>
           </Dialog>
 
-          <button onClick={() => handleSavePDFandEditor()}>
+          <button onClick={async () => handleSavePDFandEditor()}>
             <IoSave className="w-6 h-6 cursor-pointer" />
           </button>
         </div>

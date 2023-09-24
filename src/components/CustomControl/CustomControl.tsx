@@ -37,6 +37,7 @@ const CustomControl = ({ flow, reactFlowInstance }: CustomControlProps) => {
             success: "Save flow successfully",
             error: "Something went wrong",
           });
+          console.log(newFlowData);
           setSaved(true);
           setChanged(false);
         }

@@ -13,7 +13,6 @@ interface UploadPdfProps {
 }
 
 const UploadPdf = ({ pdfFile, setPdfFile }: UploadPdfProps) => {
-  // const [pdfFile, setPdfFile] = useState<any>(null);
   const [pdfError, setPdfError] = useState("");
 
   const allowedFileTypes = ["application/pdf"];
