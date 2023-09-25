@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 const SideNav = () => {
   const updatedFlows = useFlowsStore((state) => state.updateFlows);
+  const flows = useFlowsStore((state) => state.flows);
 
   useEffect(() => {
     const getflows = async () => {
@@ -16,14 +17,14 @@ const SideNav = () => {
     };
 
     getflows().catch(console.error);
-  }, [updatedFlows]);
+  }, [updatedFlows, flows]);
   return (
     <div className="flex flex-col shadow-sm gap-y-2 border-r border-slate-200 h-full w-[300px] p-2">
       <Box>
         <CreateButton />
       </Box>
       <Box className="overflow-y-auto h-full">
-        <Library />
+        <Library flows={flows} />
       </Box>
     </div>
   );

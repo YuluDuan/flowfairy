@@ -3,9 +3,13 @@
 import { LuWorkflow } from "react-icons/lu";
 import FlowModal from "./FlowModal";
 import { ConfirmDialog } from "primereact/confirmdialog";
-import useFlowsStore from "@/store/useFlowsStore";
-const Library = () => {
-  const flows = useFlowsStore((state) => state.flows);
+import { FlowType } from "@/types";
+
+interface LibraryProp {
+  flows: FlowType[];
+}
+
+const Library = ({ flows }: LibraryProp) => {
   return (
     <>
       <div className="flex flex-col">
