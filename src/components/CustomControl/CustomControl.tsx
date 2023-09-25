@@ -1,8 +1,13 @@
 "use client";
 
-import { Controls, ControlButton, ReactFlowInstance } from "reactflow";
+import {
+  Controls,
+  ControlButton,
+  ReactFlowInstance,
+  ReactFlowJsonObject,
+} from "reactflow";
 import { IoIosSave } from "react-icons/io";
-import { FlowFromDB } from "@/types";
+import { FlowType } from "@/types";
 import { updateFlowInDatabase } from "@/lib/api-controllers";
 import { useCallback, useEffect, useState } from "react";
 import useFlowStore from "@/store/useFlowStore";
@@ -11,7 +16,7 @@ import useUnsavedChangesWarning from "../hooks/useUnsavedChangesWarning";
 
 interface CustomControlProps {
   reactFlowInstance: ReactFlowInstance | null;
-  flow: FlowFromDB | null;
+  flow: FlowType | null;
 }
 
 const CustomControl = ({ flow, reactFlowInstance }: CustomControlProps) => {
@@ -29,14 +34,16 @@ const CustomControl = ({ flow, reactFlowInstance }: CustomControlProps) => {
     const saveFlow = async () => {
       try {
         if (flow && reactFlowInstance) {
-          const newFlowData = reactFlowInstance.toObject();
+          const newFlowData: ReactFlowJsonObject = reactFlowInstance.toObject();
           const newFlow = { ...flow, flowData: newFlowData };
           updateFlow(newFlow);
+          console.log(newFlow);
           toast.promise(updateFlowInDatabase(newFlow), {
             loading: "Trying to Save the New Flow ...",
             success: "Save flow successfully",
             error: "Something went wrong",
           });
+          console.log(newFlowData);
           setSaved(true);
           setChanged(false);
         }
@@ -45,7 +52,7 @@ const CustomControl = ({ flow, reactFlowInstance }: CustomControlProps) => {
       }
     };
     saveFlow();
-  }, [reactFlowInstance]);
+  }, [reactFlowInstance, flow, updateFlow]);
 
   return (
     <Controls>

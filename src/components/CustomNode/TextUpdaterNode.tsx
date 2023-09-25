@@ -12,7 +12,7 @@ function TextUpdaterNode({ data, selected }: NodeProps<NodeDataType>) {
       setLabel(evt.target.value);
       data.value = evt.target.value;
     },
-    []
+    [data]
   );
 
   return (

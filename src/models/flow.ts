@@ -6,6 +6,11 @@ const FlowSchema = new Schema({
     required: [true, 'Title is required.'],
   },
 
+  id: {
+    type: String,
+    required: [true, 'Id is required.'],
+  },
+
   flowData: {
     type: Object,
     required: [true, 'Flow is required.']

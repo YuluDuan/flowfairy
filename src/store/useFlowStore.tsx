@@ -1,9 +1,9 @@
-import { FlowFromDB } from "@/types";
+import { FlowType } from "@/types";
 import { create } from "zustand";
 
 type ReactFlowState = {
-  flow: FlowFromDB | null;
-  updateFlow: (updatedFlow: FlowFromDB | null) => void;
+  flow: FlowType | null;
+  updateFlow: (updatedFlow: FlowType | null) => void;
 };
 
 const useFlowStore = create<ReactFlowState>((set) => ({

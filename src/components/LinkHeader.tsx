@@ -1,5 +1,3 @@
-// test to see if still can push things in the merged branch
-
 import { GiFairyWand } from "react-icons/gi";
 import { IoSave } from "react-icons/io5";
 import { HiBackspace } from "react-icons/hi";
@@ -64,7 +62,7 @@ const LinkHeader = ({ handleSavePDFandEditor }: LinkHeaderProps) => {
             </DialogContent>
           </Dialog>
 
-          <button onClick={() => handleSavePDFandEditor()}>
+          <button onClick={async () => handleSavePDFandEditor()}>
             <IoSave className="w-6 h-6 cursor-pointer" />
           </button>
         </div>

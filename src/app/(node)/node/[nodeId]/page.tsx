@@ -5,21 +5,18 @@ import LinkHeader from "@/components/LinkHeader";
 import UploadPdf from "@/components/UploadPdf";
 import { updateFlowInDatabase } from "@/lib/api-controllers";
 import useFlowStore from "@/store/useFlowStore";
-import { FlowFromDB, NodeDataType } from "@/types";
+import { FlowType, NodeDataType } from "@/types";
 import { LexicalEditor } from "lexical";
 import { useCallback, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
 
-const getTheNodeData = (
-  flow: FlowFromDB | null,
-  params: { nodeId: string }
-) => {
+const getTheNodeData = (flow: FlowType | null, params: { nodeId: string }) => {
   let nodeData: NodeDataType | null = null;
   if (flow) {
     const nodes = flow!.flowData.nodes;
     const nodeIndex = nodes.findIndex((node) => node.id === params.nodeId);
     if (nodeIndex !== -1) {
-      const modifiedFlow: FlowFromDB = { ...flow };
+      const modifiedFlow: FlowType = { ...flow };
       const modifiedNodes = [...modifiedFlow.flowData!.nodes];
       nodeData = modifiedNodes[nodeIndex].data;
       return nodeData;
@@ -30,7 +27,7 @@ const getTheNodeData = (
 };
 
 const getinitalEditorContent = (
-  flow: FlowFromDB | null,
+  flow: FlowType | null,
   params: { nodeId: string }
 ) => {
   const nodeData = getTheNodeData(flow, params);
@@ -40,12 +37,12 @@ const getinitalEditorContent = (
 };
 
 const LinkPage = ({ params }: { params: { nodeId: string } }) => {
-  const flow: FlowFromDB | null = useFlowStore((state) => state.flow);
+  const flow: FlowType | null = useFlowStore((state) => state.flow);
+  const updateFlow = useFlowStore((state) => state.updateFlow);
   const editorRef = useRef<LexicalEditor>();
   const [pdfFile, setPdfFile] = useState<any>(
     getTheNodeData(flow, params)?.pdf
   );
-
   const handleSavePDFandEditor = useCallback(
     (func?: () => void) => {
       const SavePDFandEditor = async () => {
@@ -56,7 +53,7 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
             (node) => node.id === params.nodeId
           );
           if (nodeIndex !== -1) {
-            const modifiedFlow: FlowFromDB = { ...flow };
+            const modifiedFlow: FlowType = { ...flow };
             const modifiedNodes = [...modifiedFlow.flowData!.nodes];
             const nodeData: NodeDataType = modifiedNodes[nodeIndex].data;
             nodeData.pdf = pdfFile;
@@ -69,6 +66,7 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
             // Update the modified nodes back into the modified flow
             modifiedFlow.flowData!.nodes = modifiedNodes;
             const updatedFlow = await updateFlowInDatabase(modifiedFlow);
+            updateFlow(updatedFlow);
             console.log("save flow successfully", updatedFlow);
             toast.success("Congrats, Note has been Saved!");
             if (func) func();
@@ -81,7 +79,7 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
 
       SavePDFandEditor();
     },
-    [flow]
+    [flow, pdfFile, params.nodeId, updateFlow]
   );
   return (
     <>

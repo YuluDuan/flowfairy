@@ -1,9 +1,8 @@
-import { FlowFromDB } from "@/types";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { deleteFlowFromDatabase } from "@/lib/api-controllers";
 import { useRouter } from "next/navigation";
-import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import { confirmDialog } from "primereact/confirmdialog";
 import useFlowsStore from "@/store/useFlowsStore";
 import Link from "next/link";
 import useFlowStore from "@/store/useFlowStore";
@@ -12,27 +11,30 @@ import toast from "react-hot-toast";
 //theme
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
+import { FlowType } from "@/types";
 
 interface Props {
-  flow: FlowFromDB;
+  flow: FlowType;
 }
 
 const FlowModal = ({ flow }: Props) => {
   const router = useRouter();
-  const getFlows = useFlowsStore((state) => state.getFlows);
+  const updateFlows = useFlowsStore((state) => state.updateFlows);
+  const flows = useFlowsStore((state) => state.flows);
   const oldflow = useFlowStore((state) => state.flow);
 
   const updateFlow = useFlowStore((state) => state.updateFlow);
 
   const handleDeleteFlow = () => {
     const accept = () => {
-      deleteFlowFromDatabase(flow._id);
+      deleteFlowFromDatabase(flow.id);
 
       // only when the canvas id equals the id of deleted flow, the canva change to placeholder
       // otherwise stay the at the current flow
-      if (oldflow?._id === flow._id) updateFlow(null);
+      if (oldflow?.id === flow.id) updateFlow(null);
+      const updatedFlows = flows.filter((item) => item.id !== flow.id);
+      updateFlows(updatedFlows);
       router.push("/main");
-      getFlows();
       toast.success("Deleted!");
     };
 
@@ -53,7 +55,7 @@ const FlowModal = ({ flow }: Props) => {
       <div className="group flex w-full py-2 px-3 items-center justify-between border rounded-xl border-solid border-accent_tone_16 bg-white shadow-sm hover:border-black">
         <Link
           className="flex gap-3 items-center"
-          href={`/main/flow/${flow._id}`}
+          href={`/main/flow/${flow.id}`}
         >
           <Image src="/assets/flow.svg" height={18} width={18} alt="flow" />
           <p className="hover:cursor-default">{flow.title}</p>

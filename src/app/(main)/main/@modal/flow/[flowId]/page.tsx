@@ -18,13 +18,14 @@ const FlowPage = ({ params }: { params: { flowId: string } }) => {
     const fetchFlowData = async () => {
       try {
         const flow = await getFlowFromDatabase(params.flowId);
+        console.log(flow);
         updateFlow(flow);
       } catch (error) {
         console.error("Failed to fetch flow data:", error);
       }
     };
     fetchFlowData();
-  }, [params.flowId]);
+  }, [params.flowId, updateFlow]);
 
   if (!flow) return <CanvaPlaceHolder />;
 
