@@ -110,7 +110,7 @@ const Canvas = ({ flow }: CanvasProps) => {
       // update/ append the new node to the Flow
       setNodes((nds) => nds.concat(newNode));
     },
-    [reactFlowInstance]
+    [reactFlowInstance, setNodes]
   );
 
   const proOptions = { hideAttribution: true };

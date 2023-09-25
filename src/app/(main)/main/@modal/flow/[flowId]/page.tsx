@@ -25,7 +25,7 @@ const FlowPage = ({ params }: { params: { flowId: string } }) => {
       }
     };
     fetchFlowData();
-  }, [params.flowId]);
+  }, [params.flowId, updateFlow]);
 
   if (!flow) return <CanvaPlaceHolder />;
 

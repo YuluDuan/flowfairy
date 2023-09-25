@@ -79,7 +79,7 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
 
       SavePDFandEditor();
     },
-    [flow, pdfFile]
+    [flow, pdfFile, params.nodeId, updateFlow]
   );
   return (
     <>
