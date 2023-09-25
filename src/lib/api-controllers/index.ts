@@ -76,7 +76,7 @@ export async function deleteFlowFromDatabase(flowId: string) {
     }
 
 
-    return response.json();
+    return response;
   } catch (error) {
     console.error(error);
     throw error;
