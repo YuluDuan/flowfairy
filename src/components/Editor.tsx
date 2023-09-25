@@ -51,8 +51,6 @@ const Editor = React.forwardRef(
     }, []);
 
     if (!isMounted) return null;
-
-    console.log("initailEditorState", initailEditorState);
     const editorConfig = {
       theme: ExampleTheme,
       editorState: initailEditorState,
