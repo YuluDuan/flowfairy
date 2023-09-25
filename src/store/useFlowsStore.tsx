@@ -1,15 +1,14 @@
-import { readFlowsFromDatabase } from "@/lib/api-controllers";
-import { FlowFromDB } from "@/types";
+import { FlowType } from "@/types";
 import { create } from "zustand";
 
 type ReactFlowState = {
   updateFlows: any;
-  flows: FlowFromDB[];
+  flows: FlowType[];
 };
 
 const useFlowsStore = create<ReactFlowState>((set) => ({
   flows: [],
-  updateFlows: (data: FlowFromDB[]) => {
+  updateFlows: (data: FlowType[]) => {
     set({ flows: data });
   },
 }));

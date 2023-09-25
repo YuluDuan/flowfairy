@@ -25,7 +25,7 @@ import CustomControl from "./CustomControl/CustomControl";
 
 import initialNodes from "../constant/nodes";
 import initialEdges from "../constant/edges";
-import { FlowFromDB } from "@/types";
+import { FlowType } from "@/types";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -41,7 +41,7 @@ const edgeTypes: EdgeTypes = {
 };
 
 interface CanvasProps {
-  flow: FlowFromDB | null;
+  flow: FlowType;
 }
 
 const Canvas = ({ flow }: CanvasProps) => {
@@ -55,7 +55,7 @@ const Canvas = ({ flow }: CanvasProps) => {
 
   // load inital data from db
   useEffect(() => {
-    if (flow) {
+    if (flow && flow.flowData) {
       setNodes(flow.flowData.nodes);
       setEdges(flow.flowData.edges);
       setViewport(flow.flowData.viewport);

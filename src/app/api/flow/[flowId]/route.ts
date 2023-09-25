@@ -9,7 +9,8 @@ export const GET = async (
   try {
     await connectToDB();
 
-    const flow = await Flow.findById(params.flowId);
+    const flow = await Flow.findOne({id: params.flowId});
+    console.log(flow);
 
     if (!flow) return new NextResponse("Flow not found", { status: 404 });
 
@@ -25,7 +26,7 @@ export const DELETE = async (
   ) => {
     try {
       await connectToDB();
-      const existingFlow = await Flow.findByIdAndRemove(params.flowId);
+      const existingFlow = await Flow.findOneAndDelete({ id: params.flowId });
       console.log(existingFlow);
       return new  NextResponse("Prompt deleted successfully", { status: 200 });
     } catch (e) {
@@ -40,8 +41,7 @@ export const DELETE = async (
     const { flowData } = await req.json();
     try {
       await connectToDB();
-  
-      const existingFlow = await Flow.findById(params.flowId);
+      const existingFlow = await Flow.findOne({id: params.flowId});
   
       if (!existingFlow)
         return new Response("Flow not found", { status: 404 });

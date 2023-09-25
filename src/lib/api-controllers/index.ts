@@ -1,4 +1,4 @@
-import { FlowFromDB } from "@/types";
+import { FlowType } from "@/types";
 import { ReactFlowJsonObject } from "reactflow";
 
   
@@ -11,6 +11,7 @@ import { ReactFlowJsonObject } from "reactflow";
  */
 export async function saveFlowToDatabase (newFlow: {
     title: string;
+    id: string;
     flowData: ReactFlowJsonObject;
   }): Promise<any> {
     try {
@@ -21,6 +22,7 @@ export async function saveFlowToDatabase (newFlow: {
         },
       body: JSON.stringify({
         title: newFlow.title,
+        id: newFlow.id,
         flowData: newFlow.flowData,
       }),
     });
@@ -37,10 +39,10 @@ export async function saveFlowToDatabase (newFlow: {
   /**
  * Reads all flows from the database.
  *
- * @returns {Promise<FlowFromDB[]>} The flow data.
+ * @returns {Promise<FlowType[]>} The flow data.
  * @throws Will throw an error if fetching fails.
  */
-export async function readFlowsFromDatabase(): Promise<FlowFromDB[]> {
+export async function readFlowsFromDatabase(): Promise<FlowType[]> {
   try {
     const response = await fetch("/api/flow");
     const data = await response.json();
@@ -85,10 +87,10 @@ export async function deleteFlowFromDatabase(flowId: string) {
  * Fetches a flow from the database by ID.
  *
  * @param {string} flowId - The ID of the flow to fetch.
- * @returns {Promise<FlowFromDB>} The flow data.
+ * @returns {Promise<FlowType>} The flow data.
  * @throws Will throw an error if fetching fails.
  */
-export async function getFlowFromDatabase(flowId: string): Promise<FlowFromDB>{
+export async function getFlowFromDatabase(flowId: string): Promise<FlowType>{
   try {
     const response = await fetch(`/api/flow/${flowId}`);
     const data = await response.json();
@@ -105,15 +107,15 @@ export async function getFlowFromDatabase(flowId: string): Promise<FlowFromDB>{
 /**
  * Updates an existing flow in the database.
  *
- * @param {FlowFromDB} updatedFlow - The updated flow data.
- * @returns {Promise<FlowFromDB>} The updated flow data.
+ * @param {FlowType} updatedFlow - The updated flow data.
+ * @returns {Promise<FlowType>} The updated flow data.
  * @throws Will throw an error if the update fails.
  */
 export async function updateFlowInDatabase(
-  updatedFlow: FlowFromDB
-): Promise<FlowFromDB> {
+  updatedFlow: FlowType
+): Promise<FlowType> {
   try {
-    const response = await fetch(`/api/flow/${updatedFlow._id}`, {
+    const response = await fetch(`/api/flow/${updatedFlow.id}`, {
       method: "PATCH",
       body: JSON.stringify({
         flowData: updatedFlow.flowData,

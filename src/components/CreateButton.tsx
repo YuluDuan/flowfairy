@@ -18,6 +18,7 @@ import defaultFlow from "@/constant/defaultFlow.json";
 import { FlowType } from "@/types";
 import { toast } from "react-hot-toast";
 import useFlowsStore from "@/store/useFlowsStore";
+import { v4 as uuidv4 } from "uuid";
 
 const CreateButton = () => {
   const [title, setTitle] = useState("");
@@ -27,6 +28,7 @@ const CreateButton = () => {
 
   const createNewFlow = (): FlowType => ({
     title: title,
+    id: uuidv4(),
     flowData: JSON.parse(JSON.stringify(defaultFlow)),
   });
 
