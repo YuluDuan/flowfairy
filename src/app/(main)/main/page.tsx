@@ -12,6 +12,7 @@ export default function Home() {
     const getflows = async () => {
       const data = await readFlowsFromDatabase();
       updateFlows(data);
+      console.log("called");
     };
 
     getflows().catch(console.error);
