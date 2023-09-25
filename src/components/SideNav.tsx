@@ -9,7 +9,6 @@ import { useEffect } from "react";
 const SideNav = () => {
   const updatedFlows = useFlowsStore((state) => state.updateFlows);
   const flows = useFlowsStore((state) => state.flows);
-
   useEffect(() => {
     const getflows = async () => {
       const data = await readFlowsFromDatabase();
@@ -17,7 +16,7 @@ const SideNav = () => {
     };
 
     getflows().catch(console.error);
-  }, [updatedFlows, flows]);
+  }, [updatedFlows]);
   return (
     <div className="flex flex-col shadow-sm gap-y-2 border-r border-slate-200 h-full w-[300px] p-2">
       <Box>
