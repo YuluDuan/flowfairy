@@ -9,6 +9,7 @@ import { useEffect } from "react";
 const SideNav = () => {
   let flows = useFlowsStore((state) => state.flows);
   const updatedFlows = useFlowsStore((state) => state.updateFlows);
+  console.log(flows);
 
   useEffect(() => {
     const getflows = async () => {
