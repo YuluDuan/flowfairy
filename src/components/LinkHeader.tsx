@@ -1,5 +1,3 @@
-// test to see if still can push things in the merged branch
-
 import { GiFairyWand } from "react-icons/gi";
 import { IoSave } from "react-icons/io5";
 import { HiBackspace } from "react-icons/hi";

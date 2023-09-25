@@ -44,7 +44,7 @@ export async function saveFlowToDatabase (newFlow: {
  */
 export async function readFlowsFromDatabase(): Promise<FlowType[]> {
   try {
-    const response = await fetch("/api/flow");
+    const response = await fetch("/api/flow", { cache: 'no-store' });
     const data = await response.json();
     
     if (response.status !== 200) {
