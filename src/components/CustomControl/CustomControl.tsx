@@ -37,13 +37,11 @@ const CustomControl = ({ flow, reactFlowInstance }: CustomControlProps) => {
           const newFlowData: ReactFlowJsonObject = reactFlowInstance.toObject();
           const newFlow = { ...flow, flowData: newFlowData };
           updateFlow(newFlow);
-          console.log(newFlow);
           toast.promise(updateFlowInDatabase(newFlow), {
             loading: "Trying to Save the New Flow ...",
             success: "Save flow successfully",
             error: "Something went wrong",
           });
-          console.log(newFlowData);
           setSaved(true);
           setChanged(false);
         }
