@@ -2,6 +2,7 @@ import { connectToDB } from "@/lib/db";
 import Flow from "@/models/flow";
 import { NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic';
 export const GET = async(req: Request) => {
     try{
         await connectToDB();
