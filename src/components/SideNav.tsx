@@ -7,9 +7,7 @@ import useFlowsStore from "@/store/useFlowsStore";
 import { useEffect } from "react";
 
 const SideNav = () => {
-  let flows = useFlowsStore((state) => state.flows);
   const updatedFlows = useFlowsStore((state) => state.updateFlows);
-  console.log(flows);
 
   useEffect(() => {
     const getflows = async () => {
@@ -25,7 +23,7 @@ const SideNav = () => {
         <CreateButton />
       </Box>
       <Box className="overflow-y-auto h-full">
-        <Library flows={flows} />
+        <Library />
       </Box>
     </div>
   );

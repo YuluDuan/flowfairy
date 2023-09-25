@@ -1,12 +1,11 @@
-import { FlowType } from "@/types";
+"use client";
+
 import { LuWorkflow } from "react-icons/lu";
 import FlowModal from "./FlowModal";
 import { ConfirmDialog } from "primereact/confirmdialog";
-
-interface Props {
-  flows: FlowType[];
-}
-const Library = ({ flows }: Props) => {
+import useFlowsStore from "@/store/useFlowsStore";
+const Library = () => {
+  const flows = useFlowsStore((state) => state.flows);
   return (
     <>
       <div className="flex flex-col">
