@@ -52,7 +52,7 @@ const CustomControl = ({ flow, reactFlowInstance }: CustomControlProps) => {
       }
     };
     saveFlow();
-  }, [reactFlowInstance]);
+  }, [reactFlowInstance, flow, updateFlow]);
 
   return (
     <Controls>
