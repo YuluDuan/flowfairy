@@ -70,7 +70,9 @@ const Canvas = ({ flow }: CanvasProps) => {
             ...params,
             type: "textUpdater",
             markerEnd: { type: MarkerType.ArrowClosed },
-            data: {},
+            data: {
+              label: "",
+            },
           },
           eds
         )

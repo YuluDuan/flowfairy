@@ -11,6 +11,7 @@ import {
 } from "reactflow";
 
 const TextUpdaterEdge = ({
+  id,
   data,
   sourceX,
   sourceY,
@@ -34,12 +35,14 @@ const TextUpdaterEdge = ({
   const [label, setLabel] = useState(initinalLabel);
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setLabel(evt.target.value);
-    data!.label = evt.target.value;
+    if (data) {
+      data.label = evt.target.value;
+    }
   };
 
   return (
     <>
-      <BaseEdge path={edgePath} markerEnd={markerEnd} style={style} />
+      <BaseEdge id={id} path={edgePath} markerEnd={markerEnd} style={style} />
       <EdgeLabelRenderer>
         <div
           style={{
