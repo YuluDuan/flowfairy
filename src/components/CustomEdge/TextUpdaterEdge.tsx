@@ -31,7 +31,7 @@ const TextUpdaterEdge = ({
     targetPosition,
   });
 
-  const initinalLabel = data ? data.label : " ";
+  const initinalLabel = data ? data.label : "";
   const [label, setLabel] = useState(initinalLabel);
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setLabel(evt.target.value);
