@@ -1,4 +1,4 @@
-import { FlowType, UserType } from "@/types";
+import { FlowType } from "@/types";
 import { ReactFlowJsonObject } from "reactflow";
 
   
