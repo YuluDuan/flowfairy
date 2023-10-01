@@ -13,6 +13,7 @@ export async function saveFlowToDatabase (newFlow: {
     title: string;
     id: string;
     flowData: ReactFlowJsonObject;
+    userId : string
   }): Promise<any> {
     try {
       const response = await fetch("/api/flow/new", {
@@ -24,6 +25,7 @@ export async function saveFlowToDatabase (newFlow: {
         title: newFlow.title,
         id: newFlow.id,
         flowData: newFlow.flowData,
+        userId: newFlow.userId
       }),
     });
 
@@ -42,15 +44,15 @@ export async function saveFlowToDatabase (newFlow: {
  * @returns {Promise<FlowType[]>} The flow data.
  * @throws Will throw an error if fetching fails.
  */
-export async function readFlowsFromDatabase(): Promise<FlowType[]> {
+export async function readFlowsFromDatabase(userId: string): Promise<FlowType[]> {
   try {
-    const response = await fetch("/api/flow", { cache: 'no-store' });
+    const response = await fetch(`/api/flow?userId=${encodeURIComponent(userId)}`);
     const data = await response.json();
     
     if (response.status !== 200) {
+      console.log(data)
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
     return data;
   } catch (error) {
     console.error(error);

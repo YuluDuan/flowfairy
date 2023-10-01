@@ -57,7 +57,7 @@ export const POST = async (request: Request) => {
 
     try {
         await connectToDB();
-        const newUser = new User({id, email: email_addresses, firstName:first_name, lastName:last_name});
+        const newUser = new User({user_id: id, email: email_addresses, firstName:first_name, lastName:last_name});
 
         await newUser.save();
         return NextResponse.json({ message: "User created" }, { status: 201 });

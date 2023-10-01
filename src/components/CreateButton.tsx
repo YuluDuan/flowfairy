@@ -20,7 +20,11 @@ import { toast } from "react-hot-toast";
 import useFlowsStore from "@/store/useFlowsStore";
 import { v4 as uuidv4 } from "uuid";
 
-const CreateButton = () => {
+interface Props {
+  curr_userId: string;
+}
+
+const CreateButton = ({ curr_userId }: Props) => {
   const [title, setTitle] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const flows = useFlowsStore((state) => state.flows);
@@ -30,6 +34,7 @@ const CreateButton = () => {
     title: title,
     id: uuidv4(),
     flowData: JSON.parse(JSON.stringify(defaultFlow)),
+    userId: curr_userId,
   });
 
   async function createAndSaveNewFlow(): Promise<void> {

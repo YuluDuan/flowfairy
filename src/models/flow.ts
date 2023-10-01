@@ -17,9 +17,9 @@ const FlowSchema = new Schema({
   },
 
   creator: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: [true, 'Creator is required.'],
+    type: String,
+    ref: "User",
+    required: true,
   },
 
 });
