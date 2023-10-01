@@ -1,11 +1,8 @@
 import "./globals.css";
-import { Quicksand } from "next/font/google";
+
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider } from "@clerk/nextjs";
-
-const quicksand = Quicksand({
-  subsets: ["latin"],
-});
+import { quicksand } from "./font";
 
 export const metadata = {
   title: "FlowFairy",
