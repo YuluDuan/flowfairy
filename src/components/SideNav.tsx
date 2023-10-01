@@ -17,7 +17,7 @@ const SideNav = ({ userId }: Props) => {
       updateFlows(data);
     };
     getflows().catch(console.error);
-  }, [updateFlows]);
+  }, [updateFlows, userId]);
 
   return (
     <div className="flex flex-col shadow-sm gap-y-2 border-r border-slate-200 h-full w-[300px] p-2">
