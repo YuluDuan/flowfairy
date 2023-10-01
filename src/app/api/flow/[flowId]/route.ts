@@ -9,13 +9,12 @@ export const GET = async (
   try {
     await connectToDB();
 
-    const flow = await Flow.findOne({id: params.flowId}).populate('creator');
+    const flow = await Flow.findOne({id: params.flowId});
 
     if (!flow) return new NextResponse("Flow not found", { status: 404 });
-
     return new NextResponse(JSON.stringify(flow), { status: 200 });
   } catch (e) {
-    return new NextResponse("Failed to get the flow", { status: 500 });
+    return new NextResponse(`Failed to get the flow ++ ${e}`, { status: 500 });
   }
 };
 
