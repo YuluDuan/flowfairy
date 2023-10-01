@@ -14,7 +14,13 @@ const FlowSchema = new Schema({
   flowData: {
     type: Object,
     required: [true, 'Flow is required.']
-  }
+  },
+
+  creator: {
+    type: String,
+    ref: "User",
+    required: true,
+  },
 
 });
 

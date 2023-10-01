@@ -10,13 +10,11 @@ export const GET = async (
     await connectToDB();
 
     const flow = await Flow.findOne({id: params.flowId});
-    console.log(flow);
 
     if (!flow) return new NextResponse("Flow not found", { status: 404 });
-
     return new NextResponse(JSON.stringify(flow), { status: 200 });
   } catch (e) {
-    return new NextResponse("Failed to the flow", { status: 500 });
+    return new NextResponse(`Failed to get the flow ++ ${e}`, { status: 500 });
   }
 };
 
@@ -42,15 +40,16 @@ export const DELETE = async (
     try {
       await connectToDB();
       const existingFlow = await Flow.findOne({id: params.flowId});
-  
+
       if (!existingFlow)
         return new Response("Flow not found", { status: 404 });
   
-      existingFlow.flowData= flowData;
-  
+      // Update the flow with new data
+      existingFlow.flowData = flowData;
       await existingFlow.save();
+      console.log("existingFlow777",existingFlow);
       return new Response(JSON.stringify(existingFlow), { status: 200 });
     } catch (e) {
-      return new Response("Failed to update prompt", { status: 500 });
+      return new Response(JSON.stringify("Failed to update prompt"), { status: 500 });
     }
   };
