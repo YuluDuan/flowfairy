@@ -9,7 +9,8 @@ export interface FlowType {
     id: string;
     title: string;
     flowData: ReactFlowJsonObject;
-    userId : string
+    userId : string;
+    active? : boolean;
 };
 
 export type NodeDataType = {
