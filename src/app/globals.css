@@ -1198,3 +1198,22 @@ i.justify-align {
   line-height: 16px; /* 133.333% */
   letter-spacing: 0.257px;
 }
+
+.bg_blue{
+  background: #FAFBFE
+}
+
+.toolbar-card{
+  width: 420px;
+  display: flex;
+  padding: 28.072px;
+  align-items: flex-start;
+  gap: 23.393px;
+  border-radius: 14.036px;
+  background: #FFF;
+  box-shadow: 0px 0.47675px 15.03613px 0px rgba(0, 0, 0, 0.15);
+}
+
+.fix_width3{
+  width: 200px;
+}

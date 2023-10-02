@@ -70,20 +70,21 @@ const Features = () => {
           </div>
         </div>
         <Image
-          src="/assets/placehoder.png"
-          width={568}
-          height={400}
-          alt="placehoder"
+          src="/assets/flowfairy1.svg"
+          width={700}
+          height={500}
+          alt="flowfairy"
+          className="pt-8"
         />
       </div>
 
       {/* Second Feature */}
       <div className={`flex gap-12 items-center`}>
         <Image
-          src="/assets/placehoder.png"
-          width={568}
+          src="/assets/flowfairy2.svg"
+          width={700}
           height={400}
-          alt="placehoder"
+          alt="flowfairy2"
         />
         <div className="flex flex-col gap-12 fix_width_1 relative">
           <Image
