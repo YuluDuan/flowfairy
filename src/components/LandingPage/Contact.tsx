@@ -13,9 +13,10 @@ const Contact = () => {
         Contact and Support
       </p>
 
-      <p className="pb-20 text_class">
-        User-centric design tailored for professionals, educators, researchers,
-        and anyone seeking a more efficient and creative way to work.
+      <p className="pb-20 text_class2">
+        We&apos;re always eager to hear your thoughts and suggestions! What
+        other features do you expect in our next release? Please don&apos;t
+        hesitate to contact us and share your valuable feedback.
       </p>
       <div className="contact_options">
         <article className="contact_option">

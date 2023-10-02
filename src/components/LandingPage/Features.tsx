@@ -10,11 +10,17 @@ const Features = () => {
       className="purple_gradient_bg2 px-12 flex flex-col items-center justify-center py-20"
     >
       <div>
-        <p className={`text-3xl ${days_one.className} leading-normal pb-20`}>
+        <p className={`text-3xl ${days_one.className} leading-normal`}>
           Unleash Your Creative Flow with{" "}
           <span className="bg-gradient-to-r from-purple-500 to-yellow-500 text-transparent bg-clip-text">
             FlowFairy
           </span>
+        </p>
+
+        <p className="pb-20 text_class">
+          User-centric design tailored for professionals, educators,
+          researchers, and anyone seeking a more efficient and creative way to
+          work.
         </p>
       </div>
       {/* First Feature */}
