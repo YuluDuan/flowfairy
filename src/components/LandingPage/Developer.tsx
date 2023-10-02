@@ -13,7 +13,7 @@ const Developer = () => {
 
       <div className="flex gap-20">
         {/* left section */}
-        <div className={`flex flex-col fix_width_1 gap-20 relative`}>
+        <div className={`flex flex-col fix_width_1 relative`}>
           <Image
             src={"/assets/3.svg"}
             height={30}
@@ -30,7 +30,7 @@ const Developer = () => {
             className="absolute bottom-60 -right-20 overflow-hidden"
           />
           <div
-            className={`flex flex-col text-2xl font-semibold ${days_one.className}`}
+            className={`flex flex-col text-2xl font-semibold ${days_one.className} pb-10`}
           >
             <p>Hello 👋,</p>
             <p>
@@ -39,7 +39,7 @@ const Developer = () => {
             <p>I am a Full Stack Developer</p>
           </div>
 
-          <div>
+          <div className="pb-16">
             <p>
               <span className="font-semibold bg-gradient-to-r from-purple-500 to-yellow-500 text-transparent bg-clip-text">
                 FlowFairy
