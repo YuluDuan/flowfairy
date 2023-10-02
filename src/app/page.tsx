@@ -1,3 +1,4 @@
+import Contact from "@/components/LandingPage/Contact";
 import Developer from "@/components/LandingPage/Developer";
 import Features from "@/components/LandingPage/Features";
 import Introduction from "@/components/LandingPage/Introduction";
@@ -16,6 +17,7 @@ const LandingPage = () => {
       <Introduction />
       <Features />
       <Developer />
+      <Contact />
     </div>
   );
 };

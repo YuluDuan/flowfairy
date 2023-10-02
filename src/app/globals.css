@@ -1117,3 +1117,55 @@ i.justify-align {
 .padding-top{
   padding-top: 1px;
 }
+
+.purple_bg3{
+  background-color: #FDF9FF;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+
+.contact_options {
+  display: flex;
+  gap: 1.2rem;
+  width: 1084px;
+  justify-content: space-between;
+}
+
+.contact_option {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 180px;
+  padding: 1.2rem;
+  border-radius: 1.2rem;
+  text-align: center;
+  background: radial-gradient(905px at 4.9% 85.8%, rgb(255, 243, 242) 0.1%, rgb(255, 247, 220) 57.6%);
+  border: 1px solid transparent;
+  transform: all 400ms ease;
+}
+
+.contact_option:hover {
+  background: transparent;
+  box-shadow: 4px 4px 40px 4px rgba(168, 168, 168, 0.25);
+}
+
+.contact_option-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact_option a {
+  margin-top: 0.7rem;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.text_class{
+  padding-top: 20px;
+  font-size: 18px;
+  width: 600px;
+  text-align: center;
+  font-weight: 500;
+}

@@ -7,11 +7,12 @@ const Developer = () => {
   return (
     <div
       id="developer"
-      className="flex flex-col purple_bg2 items-center justify-center py-20"
+      className="flex flex-col purple_bg2 items-center justify-center py-20 pb_class"
     >
       <p className={`text-3xl ${days_one.className} leading-normal pb-20`}>
         Meet the Developer
       </p>
+
       <div className="flex gap-20">
         {/* left section */}
         <div className={`flex flex-col fix_width_1 gap-20`}>
