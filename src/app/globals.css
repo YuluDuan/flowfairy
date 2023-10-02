@@ -1064,6 +1064,56 @@ i.justify-align {
   font-weight:700;
 }
 
-.purple_gradient_bg{
-  background: linear-gradient(180deg, #FDF9FF 0%, #FDF9FF 0.01%, rgba(253, 249, 255, 0.00) 100%);
+.purple_gradient_bg2{
+  background: linear-gradient(180deg,rgba(253, 249, 255, 0.00) 0%,#FDF9FF 0.01%, #FDF9FF 100%);
+}
+
+.purple_bg2{
+  background-color: #F9F7FF;
+}
+
+.pink_gradient-btn{
+  border-radius: 10px;
+  background: linear-gradient(252deg, #F1B8D2 -4.03%, #95BBE9 112.41%);
+  box-shadow: 4px 4px 40px 4px rgba(168, 168, 168, 0.25);
+}
+
+.pink_outline-btn{
+  border-radius: 10px;
+  border: 1px solid var(--sd, rgba(241, 184, 210, 0.74));
+  background: #FFF;
+  box-shadow: 4px 4px 40px 4px rgba(168, 168, 168, 0.25);
+  width: 150px;
+  font-size: 15px;
+  font-weight:700;
+  color: #F1B8D2;
+}
+
+.orange_outline-btn{
+  border-radius: 10px;
+  border: 1px solid  rgba(255,179,71);
+  background: #FFF;
+  box-shadow: 4px 4px 40px 4px rgba(168, 168, 168, 0.25);
+  width: 180px;
+  font-size: 15px;
+  font-weight:700;
+}
+
+
+
+.pink_gradient-btn2{
+  border-radius: 10px;
+  background: linear-gradient(252deg, rgba(241, 184, 210, 0.74) -4.03%, rgba(149, 187, 233, 0.79) 112.41%);
+  width: 150px;
+  font-size: 15px;
+  font-weight:700;
+  color: white;
+}
+
+.about_me-image {
+  border-radius: 2.5rem;
+}
+
+.padding-top{
+  padding-top: 1px;
 }

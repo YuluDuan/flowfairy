@@ -7,7 +7,7 @@ const Features = () => {
   return (
     <div
       id="features"
-      className="purple_gradient_bg px-12 flex flex-col items-center justify-center py-20"
+      className="purple_gradient_bg2 px-12 flex flex-col items-center justify-center py-20"
     >
       <div>
         <p className={`text-3xl ${days_one.className} leading-normal pb-20`}>
@@ -33,7 +33,7 @@ const Features = () => {
             height={20}
             width={20}
             alt="flower"
-            className="absolute bottom-20 left-12 overflow-hidden"
+            className="absolute bottom-20 left-4 overflow-hidden"
           />
           <Image
             src="/assets/feature-1.svg"
@@ -41,15 +41,27 @@ const Features = () => {
             height={45}
             alt="feature-1"
           />
-          <p className="text-2xl font-bold text-slate-800 pb-10">
-            Elegantly enrich your flowcharts with references, notes, and data,
-            while linking nodes to essential documents, keeping information at
-            your fingertips.
-          </p>
 
-          <Button className="start-btn cursor-pointer">
-            <Link href={"/sign-up"}>Learn More</Link>
-          </Button>
+          <div className="flex gap-4 content-start justify-items-start">
+            <Image
+              src={"/assets/check.svg"}
+              height={25}
+              width={25}
+              alt="check"
+              className="h-8"
+            />
+            <p className="text-2xl font-bold text-slate-800 pb-20">
+              Elegantly enrich your flowcharts with references, notes, and data,
+              while linking nodes to essential documents, keeping information at
+              your fingertips.
+            </p>
+          </div>
+
+          <div className="pl-12">
+            <Button className="start-btn cursor-pointer">
+              <Link href={"/sign-up"}>Learn More</Link>
+            </Button>
+          </div>
         </div>
         <Image
           src="/assets/placehoder.png"
@@ -81,7 +93,7 @@ const Features = () => {
             height={20}
             width={20}
             alt="flower"
-            className="absolute bottom-20 left-12 overflow-hidden"
+            className="absolute bottom-20 left-5 overflow-hidden"
           />
           <Image
             src="/assets/feature-2.svg"
@@ -89,14 +101,25 @@ const Features = () => {
             height={45}
             alt="feature-2"
           />
-          <p className="text-2xl font-bold text-slate-800 pb-10">
-            Record diverse notes alongside your flowchart, fostering a holistic
-            work environment.
-          </p>
+          <div className="flex gap-4 content-start justify-items-start">
+            <Image
+              src={"/assets/check.svg"}
+              height={25}
+              width={25}
+              alt="check"
+              className="h-8"
+            />
+            <p className="text-2xl font-bold text-slate-800 pb-20">
+              Record diverse notes alongside your flowchart, fostering a
+              holistic work environment.
+            </p>
+          </div>
 
-          <Button className="start-btn cursor-pointer">
-            <Link href={"/sign-up"}>Learn More</Link>
-          </Button>
+          <div className="pl-12">
+            <Button className="start-btn cursor-pointer">
+              <Link href={"/sign-up"}>Learn More</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

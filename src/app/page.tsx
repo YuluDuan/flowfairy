@@ -1,3 +1,4 @@
+import Developer from "@/components/LandingPage/Developer";
 import Features from "@/components/LandingPage/Features";
 import Introduction from "@/components/LandingPage/Introduction";
 import LandingPageHeader from "@/components/LandingPage/LandingPageHeader";
@@ -14,6 +15,7 @@ const LandingPage = () => {
       <LandingPageHeader />
       <Introduction />
       <Features />
+      <Developer />
     </div>
   );
 };
