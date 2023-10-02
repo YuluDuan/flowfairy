@@ -53,7 +53,7 @@ const Developer = () => {
               </a>
             </button>
             <button className="cursor-pointer pink_gradient-btn2 h-10 px-4 py-2">
-              <a href="#contact">Let's Talk!</a>
+              <a href="#contact">Let&apos;s Talk!</a>
             </button>
           </div>
         </div>

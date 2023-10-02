@@ -19,7 +19,7 @@ const LandingPageHeader = () => {
       <div className="flex gap-x-14 leading-5 py-3 text-base font-medium">
         <Link href="#features">Features</Link>
         <Link href="#developer">Meet the Developer</Link>
-        <Link href="#testimonials">Testimonials</Link>
+        {/* <Link href="#testimonials">Testimonials</Link> */}
         <Link href="#contact">Contact</Link>
       </div>
 
