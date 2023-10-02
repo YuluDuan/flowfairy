@@ -15,7 +15,22 @@ const Developer = () => {
 
       <div className="flex gap-20">
         {/* left section */}
-        <div className={`flex flex-col fix_width_1 gap-20`}>
+        <div className={`flex flex-col fix_width_1 gap-20 relative`}>
+          <Image
+            src={"/assets/3.svg"}
+            height={30}
+            width={30}
+            alt="flower"
+            className="absolute -top-5 right-0 overflow-hidden"
+          />
+
+          <Image
+            src={"/assets/1.svg"}
+            height={25}
+            width={25}
+            alt="flower"
+            className="absolute bottom-60 -right-20 overflow-hidden"
+          />
           <div
             className={`flex flex-col text-2xl font-semibold ${days_one.className}`}
           >
