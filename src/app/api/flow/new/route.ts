@@ -8,7 +8,7 @@ export const POST = async (req : Request) => {
         await connectToDB();
         const newFlow = new Flow({title, id, flowData, creator: userId});
 
-        console.log(newFlow);
+        // console.log(newFlow);
         await newFlow.save();
         return new NextResponse(JSON.stringify(newFlow), { status: 201 })
     } catch (error) {

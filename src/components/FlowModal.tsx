@@ -52,7 +52,11 @@ const FlowModal = ({ flow }: Props) => {
   };
   return (
     <>
-      <div className="group flex w-full py-2 px-3 items-center justify-between border rounded-xl border-solid border-accent_tone_16 bg-white shadow-sm hover:border-black">
+      <div
+        className={`group flex w-full py-2 px-3 items-center justify-between border rounded-xl border-solid border-accent_tone_16 bg-white shadow-sm hover:border-black ${
+          flow.active ? "border-black" : ""
+        }`}
+      >
         <Link
           className="flex gap-3 items-center"
           href={`/main/flow/${flow.id}`}

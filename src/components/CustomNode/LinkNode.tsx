@@ -46,7 +46,7 @@ function LinkNode({ id, data, selected }: NodeProps<NodeDataType>) {
 
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <button onClick={() => console.log(id)}>
+          <button>
             <GoProjectSymlink className=" hover:text-cyan-500 cursor-pointer transition duration-500 ease-in-out hover:scale-110" />
           </button>
         </AlertDialogTrigger>

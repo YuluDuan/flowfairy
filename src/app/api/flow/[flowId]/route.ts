@@ -25,7 +25,6 @@ export const DELETE = async (
     try {
       await connectToDB();
       const existingFlow = await Flow.findOneAndDelete({ id: params.flowId });
-      console.log(existingFlow);
       return new  NextResponse("Prompt deleted successfully", { status: 200 });
     } catch (e) {
       return new  NextResponse("Failed to delete prompt", { status: 500 });
@@ -47,7 +46,6 @@ export const DELETE = async (
       // Update the flow with new data
       existingFlow.flowData = flowData;
       await existingFlow.save();
-      console.log("existingFlow777",existingFlow);
       return new Response(JSON.stringify(existingFlow), { status: 200 });
     } catch (e) {
       return new Response(JSON.stringify("Failed to update prompt"), { status: 500 });
