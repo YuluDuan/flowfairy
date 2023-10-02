@@ -1120,7 +1120,6 @@ i.justify-align {
 
 .purple_bg3{
   background-color: #FDF9FF;
-  border-bottom: 1px solid #E6E6E6;
 }
 
 
@@ -1129,6 +1128,7 @@ i.justify-align {
   gap: 1.2rem;
   width: 1084px;
   justify-content: space-between;
+  cursor: default;
 }
 
 .contact_option {
@@ -1162,10 +1162,31 @@ i.justify-align {
   font-size: 0.8rem;
   font-weight: 600;
 }
+
+.contact_option a:hover{
+  cursor: pointer;
+}
+
+
 .text_class{
   padding-top: 20px;
   font-size: 18px;
   width: 600px;
   text-align: center;
   font-weight: 500;
+}
+
+.right-reserve{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-reserve p{
+  color: #92989F;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+  letter-spacing: 0.257px;
 }

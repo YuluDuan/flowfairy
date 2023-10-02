@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="purple_bg3 flex flex-col items-center justify-center py-20 px-20"
+      className="purple_bg3 flex flex-col items-center justify-center py-20 px-20 border-b border-gray-100"
     >
       <p className={`text-3xl ${days_one.className} leading-normal`}>
         Contact and Support

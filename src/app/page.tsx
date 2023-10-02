@@ -1,6 +1,7 @@
 import Contact from "@/components/LandingPage/Contact";
 import Developer from "@/components/LandingPage/Developer";
 import Features from "@/components/LandingPage/Features";
+import Footer from "@/components/LandingPage/Footer";
 import Introduction from "@/components/LandingPage/Introduction";
 import LandingPageHeader from "@/components/LandingPage/LandingPageHeader";
 import { auth } from "@clerk/nextjs";
@@ -18,6 +19,7 @@ const LandingPage = () => {
       <Features />
       <Developer />
       <Contact />
+      <Footer />
     </div>
   );
 };
