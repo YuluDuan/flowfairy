@@ -8,7 +8,7 @@ import Image from "next/image";
 const LandingPageHeader = () => {
   return (
     <nav
-      className={`flex justify-between py-5 pb-2 px-12 items-center border-b border-gray-100 sticky top-0 bg-white`}
+      className={`flex justify-between py-5 pb-2 px-12 items-center border-b border-gray-100 fixed top-0 left-0 right-0 bg-white z-50`}
     >
       <div
         className={`${days_one.className} flex gap-2 items-center text-2xl leading-normal orange_gradient cursor-default`}

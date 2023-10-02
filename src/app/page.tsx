@@ -1,3 +1,4 @@
+import Features from "@/components/LandingPage/Features";
 import Introduction from "@/components/LandingPage/Introduction";
 import LandingPageHeader from "@/components/LandingPage/LandingPageHeader";
 import { auth } from "@clerk/nextjs";
@@ -12,6 +13,7 @@ const LandingPage = () => {
     <div className="flex flex-col">
       <LandingPageHeader />
       <Introduction />
+      <Features />
     </div>
   );
 };
