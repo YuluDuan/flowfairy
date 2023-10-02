@@ -81,6 +81,10 @@
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
 }
 
+.purple_text_gradient{
+  @apply bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-transparent bg-clip-text;
+}
+
 .save {
   width: 100%;
   max-width: 16px !important;
@@ -1034,4 +1038,24 @@ i.justify-align {
 .purple_bg{
   background: rgba(250, 243, 255, 0.50);
 
+}
+
+.fix_width{
+  width: 1086px;
+}
+
+.fix_width_2{
+  width: 600px;
+}
+
+.line-hight-55{
+  line-height: 55px;
+}
+
+.start-btn{
+  border-radius: 30px;
+  background: linear-gradient(88deg, #EC74E7 -45.12%, #8468F5 74.37%);
+  width: 150px;
+  font-size: 15px;
+  font-weight:700;
 }
