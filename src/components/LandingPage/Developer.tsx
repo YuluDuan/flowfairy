@@ -48,6 +48,7 @@ const Developer = () => {
               <a
                 href="https://www.linkedin.com/in/tianyu-niki-duan-22b94b266/"
                 className="text-sky-400"
+                target="_blank"
               >
                 Niki
               </a>
