@@ -1,7 +1,5 @@
 import { days_one } from "@/app/font";
 import Image from "next/image";
-import { Button } from "../ui/button";
-import Link from "next/link";
 
 const Developer = () => {
   return (
@@ -46,8 +44,14 @@ const Developer = () => {
               <span className="font-semibold bg-gradient-to-r from-purple-500 to-yellow-500 text-transparent bg-clip-text">
                 FlowFairy
               </span>{" "}
-              was born from a heartfelt mission to empower my twin sister,
-              Nikki, in her journey of knowledge management and creativity
+              was born from a heartfelt mission to empower my twin sister,{" "}
+              <a
+                href="https://www.linkedin.com/in/tianyu-niki-duan-22b94b266/"
+                className="text-sky-400"
+              >
+                Niki
+              </a>
+              , in her journey of knowledge management and creativity
               enhancement. Facing the challenges of storing research papers,
               logic diagrams, and notes separately, we created FlowFairy—a
               revolutionary tool that seamlessly integrates logic, research
