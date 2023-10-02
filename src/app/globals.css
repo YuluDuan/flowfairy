@@ -1027,3 +1027,11 @@ i.justify-align {
   height: 20px;
 }
 
+.purple_gradient{
+  background: linear-gradient(88deg, #EC74E7 -45.12%, #8468F5 74.37%);
+}
+
+.purple_bg{
+  background: rgba(250, 243, 255, 0.50);
+
+}
