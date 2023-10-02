@@ -67,7 +67,6 @@ const LinkPage = ({ params }: { params: { nodeId: string } }) => {
             modifiedFlow.flowData!.nodes = modifiedNodes;
             const updatedFlow = await updateFlowInDatabase(modifiedFlow);
             updateFlow(updatedFlow);
-            console.log("save flow successfully", updatedFlow);
             toast.success("Congrats, Note has been Saved!");
             if (func) func();
           } else {
