@@ -10,9 +10,13 @@ export default async function Home() {
   const user = await currentUser();
   if (!user) return null;
 
-  // fetch the current user
-  const userInfo: UserType = await fetchUser(user.id);
+  try {
+    const userInfo: UserType = await fetchUser(user.id);
+    if (!userInfo) return null;
+    return <SideNav userId={userInfo._id.toString()} />;
+  } catch (error) {
+    console.error("Error fetching user:", error);
+  }
 
-  if (!userInfo) return null;
-  return <SideNav userId={userInfo._id.toString()} />;
+  return null;
 }
