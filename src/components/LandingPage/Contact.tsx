@@ -18,7 +18,7 @@ const Contact = () => {
         other features do you expect in our next release? Please don&apos;t
         hesitate to contact us and share your valuable feedback.
       </p>
-      <div className="contact_options">
+      <div className="contact_options lg:flex-row flex flex-col items-center">
         <article className="contact_option">
           <MdOutlineMailOutline className="contact_option-icon" />
           <h4>Email</h4>

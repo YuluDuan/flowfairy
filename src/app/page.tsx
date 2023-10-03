@@ -13,7 +13,7 @@ const LandingPage = () => {
     redirect("/main");
   }
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <LandingPageHeader />
       <Introduction />
       <Features />

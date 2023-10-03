@@ -1124,7 +1124,6 @@ i.justify-align {
 
 
 .contact_options {
-  display: flex;
   gap: 1.2rem;
   width: 1084px;
   justify-content: space-between;

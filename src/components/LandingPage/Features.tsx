@@ -24,7 +24,9 @@ const Features = () => {
         </p>
       </div>
       {/* First Feature */}
-      <div className={`flex gap-12 items-center pb-32`}>
+      <div
+        className={`lg:flex-row flex flex-col flex gap-12 items-center pb-32`}
+      >
         <div className="flex flex-col gap-12 fix_width_1 relative">
           <Image
             src={"/assets/4.svg"}
@@ -79,7 +81,7 @@ const Features = () => {
       </div>
 
       {/* Second Feature */}
-      <div className={`flex gap-12 items-center`}>
+      <div className={`lg:flex-row flex flex-col flex gap-12 items-center`}>
         <Image
           src="/assets/flowfairy2.svg"
           width={700}

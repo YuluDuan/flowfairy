@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Introduction = () => {
   return (
-    <div className="purple_bg px-12 py-24 flex items-center gap-10 justify-center cursor-default pb-32">
+    <div className="w-full purple_bg px-12 py-24 lg:flex-row flex flex-col items-center gap-10 justify-center cursor-default pb-32">
       <div className="flex flex-col fix_width_2 gap-7 relative">
         <Image
           src={"/assets/2.svg"}

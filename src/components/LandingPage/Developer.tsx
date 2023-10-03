@@ -11,7 +11,7 @@ const Developer = () => {
         Meet the Developer
       </p>
 
-      <div className="flex gap-20">
+      <div className="lg:flex-row flex flex-col gap-20 items-center">
         {/* left section */}
         <div className={`flex flex-col fix_width_1 relative`}>
           <Image
