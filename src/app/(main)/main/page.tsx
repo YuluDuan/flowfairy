@@ -12,7 +12,6 @@ export default async function Home() {
 
   try {
     const userInfo: UserType = await fetchUser(user.id);
-    if (!userInfo) return null;
     return <SideNav userId={userInfo._id.toString()} />;
   } catch (error) {
     console.error("Error fetching user:", error);
