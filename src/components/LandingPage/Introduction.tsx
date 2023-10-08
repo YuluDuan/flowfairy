@@ -12,7 +12,7 @@ const Introduction = () => {
           height={30}
           width={30}
           alt="flower"
-          className="absolute -top-12 left-16 overflow-hidden"
+          className="absolute -top-12 left-16"
         />
         <p
           className={`py-5 text-4xl line-hight-55 ${days_one.className} text-slate-950`}

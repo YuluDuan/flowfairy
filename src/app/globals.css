@@ -1040,10 +1040,6 @@ i.justify-align {
 
 }
 
-.fix_width{
-  width: 1086px;
-}
-
 .fix_width_2{
   width: 600px;
 }
@@ -1185,7 +1181,7 @@ i.justify-align {
 }
 
 .right-reserve{
-  margin-top: 40px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -1216,4 +1212,23 @@ i.justify-align {
 
 .fix_width3{
   width: 200px;
+}
+
+
+@media (max-width: 500px) {
+  section{
+    width: 1200px;
+  }
+
+  .fix_width_2{
+    width: 350px;
+  }
+
+  .fix_width_1{
+    width: 400px;
+  }
+
+  .fix_width3{
+    width: 100px;
+  }
 }

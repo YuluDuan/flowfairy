@@ -12,7 +12,7 @@ const Footer = () => {
           <Image src={"/assets/logo.png"} height={30} width={30} alt="Logo" />
           FlowFairy
         </div>
-        <div className="flex gap-8">
+        <div className="hidden lg:flex gap-8">
           <a href="#">Home</a>
           <a href="#features">Features</a>
           <a href="#developer">Meet the Developer</a>

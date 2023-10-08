@@ -14,9 +14,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body
-          className={`flex flex-col w-full h-screen ${quicksand.className}`}
-        >
+        <body className={`${quicksand.className} block w-screen h-screen`}>
           {props.children}
           <Toaster position="top-center" />
           <Analytics />
