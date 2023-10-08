@@ -13,7 +13,7 @@ const CanvaPlaceHolder = () => {
             <p className={` ${days_one.className} text-2xl pt-12 px-12`}>
               Quick Tips
             </p>
-            <div className="flex py-12 px-12 gap-8">
+            <div className="flex flex-col py-12 px-12 gap-8 lg:flex-row">
               {/* First Tip */}
               <div className="flex gap-5 toolbar-card bg-white items-center relative">
                 <div className="fix_width3">
@@ -90,7 +90,7 @@ const CanvaPlaceHolder = () => {
               Let&apos;s Create a New Flow Chart <br /> with
               <span className="purple_text_gradient"> FlowFairy</span>
             </p>
-            <div className="flex items-center px-12 gap-10 relative">
+            <div className="flex flex-col items-center px-12 gap-10 relative lg:flex-row">
               <Image
                 src={"/assets/GetStart.svg"}
                 height={60}
@@ -103,7 +103,7 @@ const CanvaPlaceHolder = () => {
                 height={60}
                 width={300}
                 alt="people"
-                className="absolute -top-28 right-20 overflow-hidden"
+                className="lg:absolute -top-28 right-20 overflow-hidden"
               />
             </div>
           </div>

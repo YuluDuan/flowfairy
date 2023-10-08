@@ -50,7 +50,7 @@ const Developer = () => {
                 className="text-sky-400"
                 target="_blank"
               >
-                Niki
+                @Niki
               </a>
               , in her journey of knowledge management and creativity
               enhancement. Facing the challenges of storing research papers,
