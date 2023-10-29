@@ -98,7 +98,7 @@ Please read [`CONTRIBUTING`](CONTRIBUTING.md) for details on our [`CODE OF CONDU
 - [React](https://react.dev/)
 - [MongoDB](https://www.mongodb.com/)
 - [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)
-- [Tailwind CSS](https://tailwindcss.com/): for styling
+- [Tailwind CSS](https://tailwindcss.com/)
 
 ## 💡 What I Learned:
 - Utilizing Next.js13 parallel and intercept routing, along with nested layouts
