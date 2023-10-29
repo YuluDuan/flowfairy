@@ -110,6 +110,7 @@ Please read [`CONTRIBUTING`](CONTRIBUTING.md) for details on our [`CODE OF CONDU
 ## 📈 Future Development:
 - Adding a Word plugin for easy citation in Microsoft Word.
 - Expanding functionality with different types of nodes.
+- Add Tests
 
 ##
 
