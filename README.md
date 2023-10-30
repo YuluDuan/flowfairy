@@ -10,7 +10,7 @@
 <div align="center">
 <img src="https://badgen.net/github/license/YuluDuan/flowfairy" alt="FlowFairy Badge"/>
 <img src="https://badgen.net/github/watchers/YuluDuan/flowfairy" alt="watchers"/>
-<img src="https://badgen.net/github/stars/YuluDuan/flowfairy" alt="watchers"/>
+<img src="https://badgen.net/github/stars/YuluDuan/flowfairy" alt="stars"/>
 <img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=BC4E99" alt="Star Badge"/>
 <a href="https://github.com/YuluDuan/flowfairy/issues" target="blank">
 <img src="https://img.shields.io/github/issues/YuluDuan/flowfairy?style=flat" alt="github-profile-readme-generator issues"/>
