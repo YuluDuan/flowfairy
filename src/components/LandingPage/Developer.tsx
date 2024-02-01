@@ -69,7 +69,7 @@ const Developer = () => {
           {/* Button */}
           <div className="flex gap-20">
             <button className="cursor-pointer pink_outline-btn h-10 px-4 py-2">
-              <a href="/resume.pdf" download="YuluDuan.pdf">
+              <a href="/Yulu_Resume.pdf" download="YuluDuan.pdf">
                 Resume
               </a>
             </button>
