@@ -121,6 +121,13 @@ FlowFairy is open-sourced software licensed under the [MIT license](https://open
 
 - Yulu Duan ([@YuluDuan](https://www.linkedin.com/in/yuluduan/))
 
+## 📹 Video Demo
+
+https://github.com/user-attachments/assets/6ed46e4c-621f-4b0b-9bdf-964149879201
+
+
+
+
 <p align="center">
   <a rel="noopener noreferrer" target="_blank" href="https://vercel.com/?utm_source=t3-oss&utm_campaign=oss">
     <img height="34px" src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Powered by vercel">
